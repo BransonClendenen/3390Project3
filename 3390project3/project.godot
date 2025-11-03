@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="3390Project3"
+run/main_scene="uid://crjbas1hi6vi4"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
