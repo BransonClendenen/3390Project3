@@ -21,6 +21,7 @@ text = "Create Account
 "
 
 [node name="SignIn" type="Button" parent="Buttons"]
+layout_mode = 0
 offset_left = 143.0
 offset_top = 118.0
 offset_right = 258.0
