@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://qqc8fa1q8txk" path="res://Scripts/login.gd" id="1_leum0"]
 
-[node name="Main" type="Node2D"]
+[node name="Login" type="Node2D"]
 script = ExtResource("1_leum0")
 
 [node name="Buttons" type="Control" parent="."]

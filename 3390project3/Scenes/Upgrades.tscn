@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgja44u2v5scd"]
+
+[ext_resource type="Script" uid="uid://bcbr06byj07y8" path="res://Scripts/upgrades.gd" id="1_6ahmb"]
+
+[node name="Upgrades" type="Node2D"]
+script = ExtResource("1_6ahmb")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "oh my god it workkssss
+"
+
+[node name="ButtonManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Back" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 8.0
+offset_right = 239.0
+offset_bottom = 59.0
+text = "BaCk"
+
+[connection signal="pressed" from="ButtonManager/Back" to="." method="_on_back_pressed"]
