@@ -35,6 +35,15 @@ offset_right = 551.0
 offset_bottom = 397.0
 text = "Sign Out"
 
+[node name="Settings" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 274.0
+offset_right = 285.0
+offset_bottom = 336.0
+text = "seTTingS
+"
+
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ButtonManager/Upgrades" to="." method="_on_upgrades_pressed"]
 [connection signal="pressed" from="ButtonManager/SignOut" to="." method="_on_sign_out_pressed"]
