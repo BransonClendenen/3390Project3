@@ -7,3 +7,16 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "VIDEO GAME
 "
+
+[node name="Button Manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pause" type="Button" parent="Button Manager"]
+layout_mode = 0
+offset_left = 1050.0
+offset_right = 1150.0
+offset_bottom = 82.0
+text = "Pause"
