@@ -47,3 +47,4 @@ text = "seTTingS
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ButtonManager/Upgrades" to="." method="_on_upgrades_pressed"]
 [connection signal="pressed" from="ButtonManager/SignOut" to="." method="_on_sign_out_pressed"]
+[connection signal="pressed" from="ButtonManager/Settings" to="." method="_on_settings_pressed"]

@@ -1,12 +1,15 @@
-[gd_scene format=3 uid="uid://l5bri0rppr0"]
+[gd_scene load_steps=2 format=3 uid="uid://l5bri0rppr0"]
 
-[node name="Settings" type="Control"]
+[ext_resource type="Script" uid="uid://bilfajhyujjhs" path="res://Scripts/settings_menu.gd" id="1_18g2c"]
+
+[node name="SettingsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_18g2c")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -29,3 +32,10 @@ text = "Mute"
 
 [node name="MuteCheckBox" type="CheckBox" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Back" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back
+"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

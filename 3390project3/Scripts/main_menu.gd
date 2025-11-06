@@ -1,9 +1,11 @@
 extends Node2D
 
-# Called when the node enters the scene tree for the first time.
+var settingsMenuScene: PackedScene = preload("res://UI/SettingsMenu.tscn")
+var settingsMenuInstance: Control = null
+
 func _ready() -> void:
-	pass # Replace with function body.
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	pass
+
 func _process(delta: float) -> void:
 	pass
 
@@ -15,3 +17,15 @@ func _on_sign_out_pressed() -> void:
 
 func _on_upgrades_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Upgrades.tscn")
+
+func _on_settings_pressed() -> void:
+	if not settingsMenuInstance:
+		settingsMenuInstance = settingsMenuScene.instantiate()
+		add_child(settingsMenuInstance)
+		settingsMenuInstance.top_level = true
+		settingsMenuInstance.show()
+		settingsMenuInstance.connect("menu_closed", Callable(self, "_on_settings_closed"))
+
+func _on_settings_closed():
+	settingsMenuInstance = null
+	print("Settings menu closed.")
