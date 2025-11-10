@@ -7,3 +7,4 @@
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="OverlayLayer" type="CanvasLayer" parent="."]
+layer = 2

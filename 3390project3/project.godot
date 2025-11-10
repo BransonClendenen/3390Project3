@@ -13,7 +13,11 @@ config_version=5
 config/name="3390Project3"
 run/main_scene="uid://crjbas1hi6vi4"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Sprites/icon.svg"
+
+[autoload]
+
+SceneManager="*res://Scripts/scene_manager.gd"
 
 [input]
 
