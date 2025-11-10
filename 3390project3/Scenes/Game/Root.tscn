@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ce62okt0xmav"]
+
+[node name="Root" type="Node"]
+
+[node name="GameLayer" type="Node2D" parent="."]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="OverlayLayer" type="CanvasLayer" parent="."]
