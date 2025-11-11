@@ -15,5 +15,19 @@ script = ExtResource("1_b57eb")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
+[node name="UIContainer" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="OverlayLayer" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="OverlayContainer" type="Control" parent="OverlayLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
