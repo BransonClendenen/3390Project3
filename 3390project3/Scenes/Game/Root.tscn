@@ -1,6 +1,15 @@
-[gd_scene format=3 uid="uid://ce62okt0xmav"]
+[gd_scene load_steps=2 format=3 uid="uid://ce62okt0xmav"]
 
-[node name="Root" type="Node"]
+[ext_resource type="Script" uid="uid://c8oruik0up2an" path="res://Scripts/root.gd" id="1_b57eb"]
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b57eb")
 
 [node name="GameLayer" type="Node2D" parent="."]
 

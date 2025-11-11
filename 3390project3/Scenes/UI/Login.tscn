@@ -2,16 +2,33 @@
 
 [ext_resource type="Script" uid="uid://qqc8fa1q8txk" path="res://Scripts/login.gd" id="1_leum0"]
 
-[node name="Login" type="Node2D"]
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_leum0")
 
-[node name="Buttons" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 1, 1)
 
-[node name="CreateAccount" type="Button" parent="Buttons"]
+[node name="Buttons" type="Control" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreateAccount" type="Button" parent="ColorRect/Buttons"]
 layout_mode = 0
 offset_left = 130.0
 offset_top = 27.0
@@ -20,7 +37,7 @@ offset_bottom = 93.0
 text = "Create Account
 "
 
-[node name="SignIn" type="Button" parent="Buttons"]
+[node name="SignIn" type="Button" parent="ColorRect/Buttons"]
 layout_mode = 0
 offset_left = 143.0
 offset_top = 118.0
@@ -28,5 +45,5 @@ offset_right = 258.0
 offset_bottom = 189.0
 text = "Sign In"
 
-[connection signal="pressed" from="Buttons/CreateAccount" to="." method="_on_create_account_pressed"]
-[connection signal="pressed" from="Buttons/SignIn" to="." method="_on_sign_in_pressed"]
+[connection signal="pressed" from="ColorRect/Buttons/CreateAccount" to="." method="_on_create_account_pressed"]
+[connection signal="pressed" from="ColorRect/Buttons/SignIn" to="." method="_on_sign_in_pressed"]

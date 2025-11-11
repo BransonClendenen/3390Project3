@@ -2,17 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bcbr06byj07y8" path="res://Scripts/upgrades.gd" id="1_6ahmb"]
 
-[node name="Upgrades" type="Node2D"]
+[node name="Upgrades" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_6ahmb")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "oh my god it workkssss
 "
 
 [node name="ButtonManager" type="Control" parent="."]
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
