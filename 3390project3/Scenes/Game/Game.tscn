@@ -1,18 +1,84 @@
-[gd_scene load_steps=2 format=3 uid="uid://duenb7yasxax"]
+[gd_scene load_steps=6 format=3 uid="uid://duenb7yasxax"]
 
 [ext_resource type="PackedScene" uid="uid://c3bkcex6dxlrm" path="res://Scenes/Objects/player.tscn" id="1_rdw05"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rdw05"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gwu2e"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xbxml"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ln2h6"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
-offset_left = 58.0
-offset_top = 41.0
-offset_right = 157.0
-offset_bottom = 90.0
+offset_left = -47.0
+offset_top = 99.0
+offset_right = 52.0
+offset_bottom = 148.0
 text = "VIDEO GAME
 "
 
+[node name="Wall" type="Label" parent="."]
+offset_left = -60.0
+offset_top = 1461.0
+offset_right = 128.0
+offset_bottom = 1536.0
+text = "wallwallwallwallwallwall
+
+"
+
+[node name="Wall2" type="Label" parent="."]
+offset_left = -1512.0
+offset_top = 79.0
+offset_right = -1324.0
+offset_bottom = 154.0
+rotation = -1.5707964
+text = "wallwallwallwallwallwall
+
+"
+
+[node name="Wall4" type="Label" parent="."]
+offset_left = 1508.0
+offset_top = -99.0
+offset_right = 1696.0
+offset_bottom = -24.0
+rotation = 1.5707964
+text = "wallwallwallwallwallwall
+
+"
+
+[node name="Wall3" type="Label" parent="."]
+offset_left = -130.0
+offset_top = -1525.0
+offset_right = 58.0
+offset_bottom = -1450.0
+text = "wallwallwallwallwallwall
+
+"
+
 [node name="Player" parent="." instance=ExtResource("1_rdw05")]
-position = Vector2(471, 248)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="TopWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(0, -1500)
+shape = SubResource("WorldBoundaryShape2D_rdw05")
+
+[node name="LeftWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-1500, 0)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_gwu2e")
+
+[node name="RightWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1500, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_xbxml")
+
+[node name="BottomWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(0, 1500)
+shape = SubResource("WorldBoundaryShape2D_ln2h6")
