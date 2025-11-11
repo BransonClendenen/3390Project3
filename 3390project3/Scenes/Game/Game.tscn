@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://duenb7yasxax"]
+[gd_scene load_steps=2 format=3 uid="uid://duenb7yasxax"]
+
+[ext_resource type="PackedScene" uid="uid://c3bkcex6dxlrm" path="res://Scenes/Objects/player.tscn" id="1_rdw05"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -24,3 +26,6 @@ offset_left = 1050.0
 offset_right = 1150.0
 offset_bottom = 82.0
 text = "Pause"
+
+[node name="Player" parent="." instance=ExtResource("1_rdw05")]
+position = Vector2(471, 248)
