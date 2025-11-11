@@ -19,26 +19,29 @@ func setup_layers():
 	game_layer = root_node.get_node("GameLayer")
 	ui_layer = root_node.get_node("UILayer/UIContainer")
 	overlay_layer = root_node.get_node("OverlayLayer/OverlayContainer")
-	print(game_layer)
-	print(ui_layer)
-	print(overlay_layer)
 
 func load_scene(scene_path: String):
 	if not root_node:
 		push_error("Main node not found.")
 		return
 	
-	#var game_layer = root_node.get_node("GameLayer")
 	#this clears all the children from the game scene, helps against crashes 
-	game_layer.get_children().map(func(child): child.queue_free())
+	var last_child_game = game_layer.get_child(game_layer.get_child_count()-1)
+	game_layer.remove_child(last_child_game)
+	#gets the last child from UI layer and removes it from scene
+	var last_child_ui = ui_layer.get_child(ui_layer.get_child_count()-1)
+	ui_layer.remove_child(last_child_ui)
 	
+	#creates new game scene instance
 	var new_game_layer = load(scene_path).instantiate()
+	#add the game scene to the game layer
 	game_layer.add_child(new_game_layer)
+	#comments are so cool i know im doing now!!!!
 	game_scene = new_game_layer
-	print("Loaded main scene:", scene_path)
 
 func load_ui(scene_path: String):
-	#ui_layer.get_children().map(func(child): child.queue_free())
+	var last_child_ui = ui_layer.get_child(ui_layer.get_child_count()-1)
+	ui_layer.remove_child(last_child_ui)
 	
 	var new_ui_layer = load(scene_path).instantiate()
 	new_ui_layer.size = get_viewport().size
@@ -46,8 +49,8 @@ func load_ui(scene_path: String):
 	
 
 func load_overlay(scene_path: String):
-	#var overlay_layer = root_node.get_node("OverlayLayer")
-	overlay_layer.get_children().map(func(child): child.queue_free())
+	var last_child_overlay = overlay_layer.get_child(overlay_layer.get_child_count()-1)
+	overlay_layer.remove_child(last_child_overlay)
 	
 	var new_overlay_layer = load(scene_path).instantiate()
 	overlay_layer.add_child(new_overlay_layer)

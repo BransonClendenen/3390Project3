@@ -11,11 +11,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
 func _on_create_account_pressed() -> void:
 	SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn")
 
 func _on_sign_in_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn")
 
 # func login PAOLAPAOLAPAOLA
 func _on_LoginButton_pressed():

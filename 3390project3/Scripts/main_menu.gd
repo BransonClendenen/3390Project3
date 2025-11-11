@@ -10,26 +10,14 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_start_game_pressed() -> void:
-	#get_tree().change_scene_to_file("res://Scenes/Game.tscn")\
-	pass
+	SceneManager.load_scene("res://Scenes/Game/Game.tscn")
+	SceneManager.load_overlay("res://Scenes/Overlay/Huzz.tscn")
 
 func _on_sign_out_pressed() -> void:
-	#get_tree().change_scene_to_file("res://Scenes/Login.tscn")
-	pass
+	SceneManager.load_ui("res://Scenes/UI/Login.tscn")
 
 func _on_upgrades_pressed() -> void:
-	#get_tree().change_scene_to_file("res://Scenes/Upgrades.tscn")
-	pass
+	SceneManager.load_ui("res://Scenes/UI/Upgrades.tscn")
 
 func _on_settings_pressed() -> void:
-	#if not settingsMenuInstance:
-		#settingsMenuInstance = settingsMenuScene.instantiate()
-		#add_child(settingsMenuInstance)
-		#settingsMenuInstance.top_level = true
-		#settingsMenuInstance.show()
-		#settingsMenuInstance.connect("menu_closed", Callable(self, "_on_settings_closed"))
-	pass
-
-func _on_settings_closed():
-	#settingsMenuInstance = null
-	print("Settings menu closed.")
+	SceneManager.load_overlay("res://Scenes/Overlay/SettingsMenu.tscn")
