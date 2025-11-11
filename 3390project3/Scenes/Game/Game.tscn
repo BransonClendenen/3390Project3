@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://duenb7yasxax"]
+[gd_scene load_steps=7 format=3 uid="uid://duenb7yasxax"]
 
+[ext_resource type="Script" uid="uid://c5p2op6oke3ad" path="res://Scripts/game.gd" id="1_gwu2e"]
 [ext_resource type="PackedScene" uid="uid://c3bkcex6dxlrm" path="res://Scenes/Objects/player.tscn" id="1_rdw05"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rdw05"]
@@ -12,6 +13,7 @@ normal = Vector2(0, 1)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ln2h6"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_gwu2e")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -47.0
@@ -82,3 +84,9 @@ shape = SubResource("WorldBoundaryShape2D_xbxml")
 [node name="BottomWall" type="CollisionShape2D" parent="Walls"]
 position = Vector2(0, 1500)
 shape = SubResource("WorldBoundaryShape2D_ln2h6")
+
+[node name="EnemySpawn" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="EnemySpawn" to="." method="_on_enemy_spawn_timeout"]
