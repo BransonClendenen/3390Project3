@@ -26,11 +26,13 @@ func load_scene(scene_path: String):
 		return
 	
 	#this clears all the children from the game scene, helps against crashes 
-	var last_child_game = game_layer.get_child(game_layer.get_child_count()-1)
-	game_layer.remove_child(last_child_game)
 	#gets the last child from UI layer and removes it from scene
-	var last_child_ui = ui_layer.get_child(ui_layer.get_child_count()-1)
-	ui_layer.remove_child(last_child_ui)
+	game_layer.get_children().map(func(child): child.queue_free())
+	ui_layer.get_children().map(func(child): child.queue_free())
+	#var last_child_game = game_layer.get_child(game_layer.get_child_count()-1)
+	#game_layer.remove_child(last_child_game)
+	#var last_child_ui = ui_layer.get_child(ui_layer.get_child_count()-1)
+	#ui_layer.remove_child(last_child_ui)
 	
 	#creates new game scene instance
 	var new_game_layer = load(scene_path).instantiate()
@@ -40,8 +42,10 @@ func load_scene(scene_path: String):
 	game_scene = new_game_layer
 
 func load_ui(scene_path: String):
-	var last_child_ui = ui_layer.get_child(ui_layer.get_child_count()-1)
-	ui_layer.remove_child(last_child_ui)
+	game_layer.get_children().map(func(child): child.queue_free())
+	ui_layer.get_children().map(func(child): child.queue_free())
+	#var last_child_ui = ui_layer.get_child(ui_layer.get_child_count()-1)
+	#ui_layer.remove_child(last_child_ui)
 	
 	var new_ui_layer = load(scene_path).instantiate()
 	new_ui_layer.size = get_viewport().size
@@ -49,8 +53,9 @@ func load_ui(scene_path: String):
 	
 
 func load_overlay(scene_path: String):
-	var last_child_overlay = overlay_layer.get_child(overlay_layer.get_child_count()-1)
-	overlay_layer.remove_child(last_child_overlay)
+	#overlay_layer.get_children().map(func(child): child.queue_free())
+	#var last_child_overlay = overlay_layer.get_child(overlay_layer.get_child_count()-1)
+	#overlay_layer.remove_child(last_child_overlay)
 	
 	var new_overlay_layer = load(scene_path).instantiate()
 	overlay_layer.add_child(new_overlay_layer)

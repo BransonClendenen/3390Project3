@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c5m5vwt8kjnbe"]
+[gd_scene load_steps=2 format=3 uid="uid://c5m5vwt8kjnbe"]
+
+[ext_resource type="Script" uid="uid://bht44jau77gmu" path="res://Scripts/huzz.gd" id="1_4n48u"]
 
 [node name="HUZZ" type="Control"]
 layout_mode = 3
@@ -7,12 +9,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4n48u")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 425.0
-offset_top = 216.0
-offset_right = 554.0
-offset_bottom = 265.0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 136.0
+offset_bottom = 52.0
 text = "THE HUZZ LABEL
+Health
+Exp
 "
+
+[node name="ButtonManager" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pause" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 1053.0
+offset_right = 1152.0
+offset_bottom = 89.0
+text = "Pause"
+
+[connection signal="pressed" from="ButtonManager/Pause" to="." method="_on_pause_pressed"]

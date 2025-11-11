@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b0goyq1yr07mb"]
+[gd_scene load_steps=2 format=3 uid="uid://b0goyq1yr07mb"]
+
+[ext_resource type="Script" uid="uid://bwoqrbmj6dxok" path="res://Scripts/pause_menu.gd" id="1_q1jam"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -7,3 +9,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_q1jam")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 64.0
+offset_right = 504.0
+offset_bottom = 87.0
+text = "THIS SHIT PAUSED"
+
+[node name="Buttons" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Resume" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 102.0
+offset_right = 488.0
+offset_bottom = 167.0
+text = "Reumse"
+
+[node name="Settings" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 181.0
+offset_right = 484.0
+offset_bottom = 240.0
+text = "Seppings
+"
+
+[node name="Quit" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 264.0
+offset_right = 477.0
+offset_bottom = 338.0
+text = "Qib"
+
+[connection signal="pressed" from="Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]
