@@ -25,6 +25,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Resume" type="Button" parent="Buttons"]
+process_mode = 3
 layout_mode = 0
 offset_left = 396.0
 offset_top = 102.0
@@ -33,6 +34,7 @@ offset_bottom = 167.0
 text = "Reumse"
 
 [node name="Settings" type="Button" parent="Buttons"]
+process_mode = 3
 layout_mode = 0
 offset_left = 401.0
 offset_top = 181.0
@@ -42,6 +44,7 @@ text = "Seppings
 "
 
 [node name="Quit" type="Button" parent="Buttons"]
+process_mode = 3
 layout_mode = 0
 offset_left = 403.0
 offset_top = 264.0
