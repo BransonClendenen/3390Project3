@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1gv8uo8vxisp"
-path="res://.godot/imported/icon.svg-b67cfb692a937e61d2bda8561d9e8db7.ctex"
+uid="uid://dgic6d54udwh7"
+path="res://.godot/imported/Crowbar.jpeg.jpeg-a19850832a903dad5d95c540701ca84b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-b67cfb692a937e61d2bda8561d9e8db7.ctex"]
+source_file="res://Sprites/Placeholders/Crowbar.jpeg.jpeg"
+dest_files=["res://.godot/imported/Crowbar.jpeg.jpeg-a19850832a903dad5d95c540701ca84b.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

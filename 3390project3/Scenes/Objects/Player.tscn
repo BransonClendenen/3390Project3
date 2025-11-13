@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3bkcex6dxlrm"]
 
 [ext_resource type="Script" uid="uid://bcc5pq7hew82x" path="res://Scripts/player.gd" id="1_t86h6"]
-[ext_resource type="Texture2D" uid="uid://1gv8uo8vxisp" path="res://Sprites/icon.svg" id="2_5f5w1"]
+[ext_resource type="Texture2D" uid="uid://n1xcgw3w1dxk" path="res://Sprites/Placeholders/patrick.jpeg.jpeg" id="2_5f5w1"]
 [ext_resource type="PackedScene" uid="uid://r2ueiljgmk1s" path="res://Scenes/Objects/Gun.tscn" id="3_5f5w1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvv6r"]
