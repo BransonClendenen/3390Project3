@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnt38fdn7anq"
-path="res://.godot/imported/lick.jpeg.jpeg-a97e966b9402478b68f8ea2877d85440.ctex"
+uid="uid://2ruyij2jmem0"
+path="res://.godot/imported/InvincibilityPowerup-fortnite.png-37c03b2de6b7adbeb9f0b8390bf94c01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Placeholders/lick.jpeg.jpeg"
-dest_files=["res://.godot/imported/lick.jpeg.jpeg-a97e966b9402478b68f8ea2877d85440.ctex"]
+source_file="res://Sprites/InvincibilityPowerup-fortnite.png"
+dest_files=["res://.godot/imported/InvincibilityPowerup-fortnite.png-37c03b2de6b7adbeb9f0b8390bf94c01.ctex"]
 
 [params]
 

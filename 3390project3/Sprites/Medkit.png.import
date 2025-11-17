@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnt38fdn7anq"
-path="res://.godot/imported/lick.jpeg.jpeg-a97e966b9402478b68f8ea2877d85440.ctex"
+uid="uid://bsc0613uwukvg"
+path="res://.godot/imported/Medkit.png-3f6baeeff9ecf1773bcdb61ac76c70bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Placeholders/lick.jpeg.jpeg"
-dest_files=["res://.godot/imported/lick.jpeg.jpeg-a97e966b9402478b68f8ea2877d85440.ctex"]
+source_file="res://Sprites/Medkit.png"
+dest_files=["res://.godot/imported/Medkit.png-3f6baeeff9ecf1773bcdb61ac76c70bd.ctex"]
 
 [params]
 
