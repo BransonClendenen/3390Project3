@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 func _on_start_game_pressed() -> void:
 	SceneManager.load_scene("res://Scenes/Game/Game.tscn")
 	SceneManager.load_overlay("res://Scenes/Overlay/Huzz.tscn")
+	SceneManager.game_start()
 
 func _on_sign_out_pressed() -> void:
 	SceneManager.load_ui("res://Scenes/UI/Login.tscn")

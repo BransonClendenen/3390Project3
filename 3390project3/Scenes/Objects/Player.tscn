@@ -19,3 +19,5 @@ shape = SubResource("RectangleShape2D_kvv6r")
 
 [node name="Gun" parent="." instance=ExtResource("3_5f5w1")]
 position = Vector2(72, 41)
+
+[node name="Camera2D" type="Camera2D" parent="."]

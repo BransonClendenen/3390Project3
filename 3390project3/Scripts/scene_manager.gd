@@ -10,6 +10,12 @@ extends Node
 @onready var ui_layer: Control = null
 @onready var overlay_layer: Control = null
 
+#player stats
+const PLAYER_HEALTH: int = 1;
+const PLAYER_SPEED: int = 300;
+const PLAYER_ATTACK_DAMAGE: int = 1;
+const PLAYER_ATTACK_SPEED: int = 1;
+
 func _ready():
 	setup_layers()
 	load_ui("res://Scenes/UI/Login.tscn")
@@ -65,3 +71,12 @@ func hide_all_overlays():
 	overlay_stack.clear()
 	overlay_scene = null
 	print("All overlays cleared")
+
+signal reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE)
+
+func game_start():
+	print("does this get class3ed")
+	#TODO replace signal variable with varibles after updated by profile stats
+	emit_signal("reset_stats",PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE)
+	#needs to reset player stats at the start of the game
+	#needs to also be added/multiplied by profile stats

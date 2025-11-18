@@ -1,8 +1,30 @@
 extends CharacterBody2D
 
+#wrong they are set here(i am very smart)
+var SPEED: int = 0 #some math for something idk
+var health: int = 0 #increments hearts on healthbar
+var attack_damage: int = 0 #gun damage multiplied by this number
+var attack_speed: int = 0 #timer is divided by this number
 
-const SPEED = 300.0
+func _ready():
+	SceneManager.reset_stats.connect(_on_reset_stats)
 
+func _on_reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE):
+	
+	SPEED = PLAYER_SPEED
+	health = PLAYER_SPEED
+	attack_damage = PLAYER_ATTACK_DAMAGE
+	attack_speed = PLAYER_ATTACK_SPEED
+	$Gun.attack_speed = attack_speed
+	$Gun.attack_damage = attack_damage
+
+#every time the stats get modified this function gets called to update the player and gun variables
+signal stats_changed(attack_damage, attack_speed)
+
+func modify_stats(new_attack_damage,new_attack_speed):
+	attack_damage = new_attack_damage
+	attack_speed = new_attack_speed
+	emit_signal("stats_changed",attack_damage,attack_speed)
 
 func _physics_process(delta: float) -> void:
 	var x_direction := Input.get_axis("move_left", "move_right")
@@ -18,3 +40,12 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
 	move_and_slide()
+	
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		
+		if collision.get_collider().is_in_group("Enemies"):
+			pass
+			#healthbar depelete function or wtv
+			#check healthbar function as well to see if greater than 0 after every 
+			#time a collsion occurs
