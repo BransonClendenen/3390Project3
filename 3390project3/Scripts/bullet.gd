@@ -13,5 +13,5 @@ func _on_disappear_timeout() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):
-		#body.apply_damage(attack_damage)
+		body.apply_damage(attack_damage)
 		queue_free()

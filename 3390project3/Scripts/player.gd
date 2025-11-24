@@ -8,6 +8,7 @@ var attack_speed: int = 0 #timer is divided by this number
 
 func _ready():
 	SceneManager.reset_stats.connect(_on_reset_stats)
+	add_to_group("player")
 
 func _on_reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE):
 	

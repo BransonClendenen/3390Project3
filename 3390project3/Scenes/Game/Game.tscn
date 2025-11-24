@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://duenb7yasxax"]
+[gd_scene load_steps=9 format=3 uid="uid://duenb7yasxax"]
 
 [ext_resource type="Script" uid="uid://c5p2op6oke3ad" path="res://Scripts/game.gd" id="1_gwu2e"]
 [ext_resource type="PackedScene" uid="uid://c3bkcex6dxlrm" path="res://Scenes/Objects/Player.tscn" id="1_rdw05"]
+[ext_resource type="Script" uid="uid://b3fe7b4x2dlf1" path="res://Scripts/enemy_system.gd" id="3_ln2h6"]
+[ext_resource type="Script" uid="uid://dk3bce2sdje6e" path="res://Scripts/enemy_manager.gd" id="4_y3kpf"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rdw05"]
 normal = Vector2(0, 1)
@@ -85,8 +87,16 @@ shape = SubResource("WorldBoundaryShape2D_xbxml")
 position = Vector2(0, 1500)
 shape = SubResource("WorldBoundaryShape2D_ln2h6")
 
-[node name="EnemySpawn" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
+[node name="EnemySystem" type="Node2D" parent="."]
+script = ExtResource("3_ln2h6")
 
-[connection signal="timeout" from="EnemySpawn" to="." method="_on_enemy_spawn_timeout"]
+[node name="SpawnTimer" type="Timer" parent="EnemySystem"]
+wait_time = 2.0
+
+[node name="EnemyManager" type="Node2D" parent="EnemySystem"]
+script = ExtResource("4_y3kpf")
+
+[node name="EnemyFolder" type="Node2D" parent="EnemySystem"]
+
+[connection signal="timeout" from="EnemySystem/SpawnTimer" to="." method="_on_enemy_spawn_timeout"]
+[connection signal="timeout" from="EnemySystem/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
