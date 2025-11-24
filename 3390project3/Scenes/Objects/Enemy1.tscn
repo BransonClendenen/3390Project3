@@ -1,17 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://dbjfgtw6gnarc"]
 
 [ext_resource type="Script" uid="uid://l3u8qj7ntqs8" path="res://Scripts/enemy_1.gd" id="1_x2ge6"]
-[ext_resource type="Texture2D" uid="uid://bsrhbq80m6w78" path="res://Sprites/paul.webp" id="1_yvlwf"]
+[ext_resource type="Texture2D" uid="uid://dq01d7lipy0gx" path="res://Sprites/FloatingPaul.png" id="2_x2ge6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ks78"]
-size = Vector2(46, 50)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2ge6"]
+radius = 26.5
+height = 85.0
 
 [node name="Enemy1" type="CharacterBody2D" groups=["Enemies"]]
 script = ExtResource("1_x2ge6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_7ks78")
+position = Vector2(1.5, -0.5)
+shape = SubResource("CapsuleShape2D_x2ge6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.231, 0.25)
-texture = ExtResource("1_yvlwf")
+scale = Vector2(1.848, 2)
+texture = ExtResource("2_x2ge6")
