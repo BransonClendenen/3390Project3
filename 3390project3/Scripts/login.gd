@@ -3,10 +3,13 @@ extends Control
 @onready var status_label = $StatusLabel
 @onready var password_field = $passwordField
 @onready var username_field = $usernameField
+@onready var http_request = $HTTPRequest
 
+var API_BASE:="http://localhost:3000/"
+var auth_token:=""
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass 
+	http_request.request_completed(_on_request_completed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
