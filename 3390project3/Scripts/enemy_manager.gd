@@ -2,9 +2,9 @@ extends Node2D
 
 var enemy_scene = preload("res://Scenes/Objects/Enemy1.tscn")
 
-var enemy_health := 1
-var enemy_damage := 1
-var enemy_speed := 150
+var enemy_health := 0
+var enemy_damage := 0
+var enemy_speed := 0
 
 var active_enemies: Array = []
 
