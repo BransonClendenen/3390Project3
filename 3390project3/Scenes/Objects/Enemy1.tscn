@@ -1,19 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbjfgtw6gnarc"]
+[gd_scene load_steps=5 format=3 uid="uid://dbjfgtw6gnarc"]
 
 [ext_resource type="Script" uid="uid://l3u8qj7ntqs8" path="res://Scripts/enemy_1.gd" id="1_x2ge6"]
 [ext_resource type="Texture2D" uid="uid://dq01d7lipy0gx" path="res://Sprites/FloatingPaul.png" id="2_x2ge6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2ge6"]
-radius = 26.5
-height = 85.0
+radius = 19.5
+height = 73.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hrnfo"]
+radius = 27.0
+height = 84.0
 
 [node name="Enemy1" type="CharacterBody2D" groups=["Enemies"]]
 script = ExtResource("1_x2ge6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, -0.5)
 shape = SubResource("CapsuleShape2D_x2ge6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.848, 2)
 texture = ExtResource("2_x2ge6")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CapsuleShape2D_hrnfo")
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

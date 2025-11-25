@@ -11,3 +11,4 @@ func _on_spawn_timer_timeout():
 
 func increase_difficulty():
 	pass
+	#eventually increment difficulty based on time passed

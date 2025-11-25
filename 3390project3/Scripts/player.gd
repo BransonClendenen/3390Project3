@@ -8,7 +8,7 @@ var attack_speed: int = 0 #timer is divided by this number
 
 func _ready():
 	SceneManager.reset_stats.connect(_on_reset_stats)
-	add_to_group("player")
+	add_to_group("Player")
 
 func _on_reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE):
 	
@@ -41,12 +41,13 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
 	move_and_slide()
-	
-	for i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(i)
-		
-		if collision.get_collider().is_in_group("Enemies"):
-			pass
-			#healthbar depelete function or wtv
-			#check healthbar function as well to see if greater than 0 after every 
-			#time a collsion occurs
+
+func apply_damage(amount):
+	health -= amount
+	print("Player took ", amount, " damage!")
+	if health <= 0:
+		die()
+
+func die():
+	pass
+	#stop game and end player to game over screen, then to start screen
