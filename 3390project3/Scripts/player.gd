@@ -42,6 +42,18 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+func apply_item(item_type: String, value: int):
+	match item_type:
+		"EXP":
+			pass
+		"Coin":
+			pass
+		"Medkit":
+			pass
+		"Cloak":
+			pass
+
+
 func apply_damage(amount):
 	health -= amount
 	print("Player took ", amount, " damage!")
