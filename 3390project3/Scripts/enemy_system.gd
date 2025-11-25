@@ -6,7 +6,7 @@ const STANDARD_SPEED = 150
 
 const increase_health = 1
 const increase_damage = 1
-const increase_speed = 20
+const increase_speed = 10
 
 @onready var boss_timer: Timer = $BossTimer
 @onready var spawn_timer: Timer = $SpawnTimer
@@ -31,7 +31,6 @@ func reset_difficulty():
 	enemy_manager.enemy_health = STANDARD_HEALTH 
 	enemy_manager.enemy_damage = STANDARD_DAMAGE
 	enemy_manager.enemy_speed = STANDARD_SPEED
-	
 
 func increase_difficulty(multiplier):
 	enemy_manager.enemy_health += increase_health * multiplier

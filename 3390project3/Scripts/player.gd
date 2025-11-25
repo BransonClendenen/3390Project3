@@ -13,7 +13,7 @@ func _ready():
 func _on_reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE):
 	
 	SPEED = PLAYER_SPEED
-	health = PLAYER_SPEED
+	health = PLAYER_HEALTH
 	attack_damage = PLAYER_ATTACK_DAMAGE
 	attack_speed = PLAYER_ATTACK_SPEED
 	$Gun.attack_speed = attack_speed
@@ -45,9 +45,11 @@ func _physics_process(delta: float) -> void:
 func apply_damage(amount):
 	health -= amount
 	print("Player took ", amount, " damage!")
+	print(health)
 	if health <= 0:
 		die()
 
 func die():
-	pass
+	SceneManager.load_overlay("res://Scenes/Overlay/GameOver.tscn")
+	get_tree().paused = true
 	#stop game and end player to game over screen, then to start screen
