@@ -11,7 +11,7 @@ extends Node
 @onready var overlay_layer: Control = null
 
 #player stats
-const PLAYER_HEALTH: int = 1;
+const PLAYER_HEALTH: int = 3;
 const PLAYER_SPEED: int = 300;
 const PLAYER_ATTACK_DAMAGE: int = 1;
 const PLAYER_ATTACK_SPEED: int = 1;

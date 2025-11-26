@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var item_type: String
+@export var item_type: String ="Coin"
 @export var value: int = 1
 
 signal picked_up

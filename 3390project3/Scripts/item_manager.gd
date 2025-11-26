@@ -1,5 +1,6 @@
 extends Node2D
 
+signal apply_item(item_type: String, value: int)
 
 var item_scenes := {
 	"EXP": preload("res://Scenes/Objects/EXP.tscn"),
@@ -37,6 +38,7 @@ func spawn_item(item_type: String, position: Vector2):
 		return
 	
 	var item_instance = item_scenes[item_type].instantiate()
+	item_instance.connect("picked_up", _item_picked_up)
 	item_instance.position = position
 	add_child(item_instance)
 	#print("item spawned!", item_instance, item_instance.position, item_type)
@@ -44,3 +46,7 @@ func spawn_item(item_type: String, position: Vector2):
 func spawn_random_item(position: Vector2):
 	var item_type = get_weighted_item()
 	spawn_item(item_type, position)
+
+func _item_picked_up(item_type: String, value: int):
+	emit_signal("apply_item", item_type, value)
+	
