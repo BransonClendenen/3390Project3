@@ -11,10 +11,13 @@ extends Node
 @onready var overlay_layer: Control = null
 
 #player stats
+var player
 const PLAYER_HEALTH: int = 3;
 const PLAYER_SPEED: int = 300;
 const PLAYER_ATTACK_DAMAGE: int = 1;
 const PLAYER_ATTACK_SPEED: int = 1;
+
+var ui
 
 func _ready():
 	setup_layers()
@@ -75,8 +78,22 @@ func hide_all_overlays():
 signal reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE)
 
 func game_start():
-	print("does this get class3ed")
+	player = get_tree().get_first_node_in_group("Player")
+	player.show_level_up_overlay.connect(show_level_up)
 	#TODO replace signal variable with varibles after updated by profile stats
 	emit_signal("reset_stats",PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE)
 	#needs to reset player stats at the start of the game
 	#needs to also be added/multiplied by profile stats
+
+signal randomize_level_up()
+
+func show_level_up():
+	#print(overlay_stack,overlay_scene,overlay_layer)
+	ui = overlay_scene
+	ui.increase_stat.connect(ui_to_player_stat)
+	emit_signal("randomize_level_up")
+
+signal increase_player_stat(upgrade_name: String,upgrade_amount: int)
+
+func ui_to_player_stat(upgrade_name,upgrade_amount):
+	emit_signal("increase_player_stat",upgrade_name,upgrade_amount)

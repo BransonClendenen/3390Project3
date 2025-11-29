@@ -10,10 +10,13 @@ var attack_damage
 var attack_speed
 
 func _ready():
-	player.stats_changed.connect(_on_player_stats_changed)
+	player.gun_attack_damage_changed.connect(_on_attack_damage_changed)
+	player.gun_attack_speed_changed.connect(_on_attack_speed_changed)
 
-func _on_player_stats_changed(dmg, spd):
+func _on_attack_damage_changed(dmg):
 	attack_damage = dmg
+
+func _on_attack_speed_changed(spd):
 	attack_speed = spd
 
 func _on_cooldown_timeout() -> void:
