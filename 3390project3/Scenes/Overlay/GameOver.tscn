@@ -34,4 +34,11 @@ offset_right = 515.0
 offset_bottom = 148.0
 text = "Oh NO you ded!"
 
+[node name="CoinsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 606.0
+offset_top = 126.0
+offset_right = 646.0
+offset_bottom = 149.0
+
 [connection signal="pressed" from="buttonManager/Quit" to="." method="_on_quit_pressed"]

@@ -140,7 +140,10 @@ func apply_damage(amount):
 	if current_health <= 0:
 		die()
 
+signal display_coins(current_coins)
+
 func die():
 	SceneManager.load_overlay("res://Scenes/Overlay/GameOver.tscn")
+	emit_signal("display_coins",current_coins)
 	get_tree().paused = true
 	#stop game and end player to game over screen, then to start screen

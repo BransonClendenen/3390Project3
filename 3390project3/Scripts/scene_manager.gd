@@ -82,6 +82,7 @@ signal reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTA
 func game_start():
 	player = get_tree().get_first_node_in_group("Player")
 	player.show_level_up_overlay.connect(show_level_up)
+	player.display_coins.connect(send_coins)
 	
 	#if ANYTHING is moved in tree you have to change number in get_child()
 	#spahgetti code to rule all spahgetti code
@@ -115,3 +116,8 @@ signal increase_player_stat(upgrade_name: String,upgrade_amount: int)
 func ui_to_player_stat(upgrade_name,upgrade_amount):
 	emit_signal("increase_player_stat",upgrade_name,upgrade_amount)
 #end lvl up ui
+
+signal sending_coins(current_coins)
+
+func send_coins(current_coins):
+	emit_signal("sending_coins",current_coins)

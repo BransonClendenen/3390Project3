@@ -9,7 +9,7 @@ var item_scenes := {
 	"Cloak": preload("res://Scenes/Objects/Cloak.tscn")
 }
 var item_weight := {
-	"EXP": 0,
+	"EXP": 90,
 	"Coin": 5,
 	"Medkit": 4,
 	"Cloak": 1
