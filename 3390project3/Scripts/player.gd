@@ -13,6 +13,15 @@ var level = 0
 var next_level = 0
 var current_exp = 0
 
+#these connect to the ui for real time stat updates
+signal health_changed(current,max)
+signal exp_changed(current, max)
+#every time the stats get modified this function gets called to update the player and gun variables
+signal gun_attack_damage_changed(attack_damage)
+signal gun_attack_speed_changed(attack_speed)
+#gets called in level_up() and starts the chain for the lvl up screen and logic
+signal show_level_up_overlay()
+
 func _ready():
 	SceneManager.reset_stats.connect(_on_reset_stats)
 	add_to_group("Player")
@@ -35,8 +44,9 @@ func _on_reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_AT
 	#gun stats
 	$Gun.attack_speed = attack_speed
 	$Gun.attack_damage = attack_damage
-
-signal show_level_up_overlay()
+	
+	emit_signal("exp_changed", current_exp, next_level)
+	emit_signal("health_changed", current_health, max_health)
 
 func level_up():
 	level += 1
@@ -44,11 +54,8 @@ func level_up():
 	next_level = 2 + level + next_level
 	SceneManager.load_overlay("res://Scenes/Overlay/LevelUp.tscn")
 	emit_signal("show_level_up_overlay")
+	emit_signal("exp_changed", current_exp, next_level)
 	#print("level up!", level, "current:",current_exp,"next_lvl",next_level)
-
-#every time the stats get modified this function gets called to update the player and gun variables
-signal gun_attack_damage_changed(attack_damage)
-signal gun_attack_speed_changed(attack_speed)
 
 func _increase_player_stat(stat_name: String, amount: int):
 	print("increase stat called we fucking good")
@@ -63,6 +70,7 @@ func _increase_player_stat(stat_name: String, amount: int):
 				current_health = max_health
 			else:
 				current_health += amount
+			emit_signal("health_changed", current_health, max_health)
 		"attack_damage":
 			attack_damage += amount
 			emit_signal("gun_attack_damage_changed",attack_damage)
@@ -96,11 +104,14 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+
+
 func _on_apply_item(item_type: String, value: int):
 	match item_type:
 		"EXP":
 			current_exp += value
 			print(current_exp)
+			emit_signal("exp_changed", current_exp, next_level)
 			if current_exp >= next_level:
 				get_tree().paused = true
 				level_up()
@@ -108,6 +119,7 @@ func _on_apply_item(item_type: String, value: int):
 			pass
 		"Medkit":
 			pass
+			emit_signal("health_changed", current_health, max_health)
 		"Cloak":
 			pass
 
@@ -115,6 +127,7 @@ func apply_damage(amount):
 	current_health -= amount
 	print("Player took ", amount, " damage!")
 	print(current_health)
+	emit_signal("health_changed", current_health, max_health)
 	if current_health <= 0:
 		die()
 

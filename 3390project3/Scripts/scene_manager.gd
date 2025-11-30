@@ -18,6 +18,8 @@ const PLAYER_ATTACK_DAMAGE: int = 1;
 const PLAYER_ATTACK_SPEED: int = 1;
 
 var ui
+var huzz
+var enemy_manager
 
 func _ready():
 	setup_layers()
@@ -80,11 +82,26 @@ signal reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTA
 func game_start():
 	player = get_tree().get_first_node_in_group("Player")
 	player.show_level_up_overlay.connect(show_level_up)
+	
+	#if ANYTHING is moved in tree you have to change number in get_child()
+	#spahgetti code to rule all spahgetti code
+	#anyways this defines variables and makes connections for the huzz
+	enemy_manager = game_scene.get_child(1)
+	huzz = overlay_scene
+	player.health_changed.connect(huzz.update_health)
+	player.exp_changed.connect(huzz.update_exp)
+	enemy_manager.boss_timer_tick.connect(huzz.update_timer)
+
 	#TODO replace signal variable with varibles after updated by profile stats
 	emit_signal("reset_stats",PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE)
 	#needs to reset player stats at the start of the game
 	#needs to also be added/multiplied by profile stats
 
+#so as seen in game_start() theres a way easier way to make connections that only
+#takes 5 lines of code for 3 signals between two objects, instead of
+#all this bullshit i wrote below, the more you learn
+
+#this is all for the lvl up overlay
 signal randomize_level_up()
 
 func show_level_up():
@@ -97,3 +114,4 @@ signal increase_player_stat(upgrade_name: String,upgrade_amount: int)
 
 func ui_to_player_stat(upgrade_name,upgrade_amount):
 	emit_signal("increase_player_stat",upgrade_name,upgrade_amount)
+#end lvl up ui

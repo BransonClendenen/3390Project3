@@ -16,6 +16,9 @@ var total_time = 300
 var interval = 30
 var last_difficulty_step = 0
 var multiplier = 0
+var tick_accumulator = 0.0
+
+signal boss_timer_tick(time_left)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,6 +41,13 @@ func increase_difficulty(multiplier):
 	enemy_manager.enemy_speed += increase_speed * multiplier
 
 func _process(delta):
+	tick_accumulator += delta
+	
+	#emits a signal once per second in order to update the hud overlay
+	if tick_accumulator >= 1.0:
+		tick_accumulator -= 1.0
+		emit_signal("boss_timer_tick",boss_timer.time_left)
+	
 	if boss_timer.time_left == 300:
 		reset_difficulty()
 	var current_step = int((total_time - boss_timer.time_left) / interval)
