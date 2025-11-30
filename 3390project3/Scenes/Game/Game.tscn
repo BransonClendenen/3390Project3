@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://duenb7yasxax"]
+[gd_scene load_steps=11 format=3 uid="uid://duenb7yasxax"]
 
 [ext_resource type="Script" uid="uid://c5p2op6oke3ad" path="res://Scripts/game.gd" id="1_gwu2e"]
 [ext_resource type="PackedScene" uid="uid://c3bkcex6dxlrm" path="res://Scenes/Objects/Player.tscn" id="1_rdw05"]
 [ext_resource type="Script" uid="uid://b3fe7b4x2dlf1" path="res://Scripts/enemy_system.gd" id="3_ln2h6"]
 [ext_resource type="Script" uid="uid://dk3bce2sdje6e" path="res://Scripts/enemy_manager.gd" id="4_y3kpf"]
 [ext_resource type="Script" uid="uid://dfqef8h3v6nc5" path="res://Scripts/item_manager.gd" id="5_y3kpf"]
+[ext_resource type="Texture2D" uid="uid://bq8h6gqssvg8i" path="res://Sprites/Dungeon-Floor.png" id="6_3k6gv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rdw05"]
 normal = Vector2(0, 1)
@@ -105,6 +106,11 @@ one_shot = true
 
 [node name="ItemManager" type="Node2D" parent="."]
 script = ExtResource("5_y3kpf")
+
+[node name="MapSprites" type="Node2D" parent="."]
+
+[node name="DungeonFloor" type="Sprite2D" parent="MapSprites"]
+texture = ExtResource("6_3k6gv")
 
 [connection signal="timeout" from="EnemySystem/SpawnTimer" to="." method="_on_enemy_spawn_timeout"]
 [connection signal="timeout" from="EnemySystem/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
