@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var item_type: String ="Coin"
+@export var item_type: String = "Coin"
 @export var value: int = 1
 
 signal picked_up
@@ -10,5 +10,5 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
-		emit_signal("picked_up", body)
+		emit_signal("picked_up", item_type, value)
 		queue_free()

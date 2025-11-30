@@ -13,6 +13,8 @@ var level = 0
 var next_level = 0
 var current_exp = 0
 
+var current_coins = 0
+
 #these connect to the ui for real time stat updates
 signal health_changed(current,max)
 signal exp_changed(current, max)
@@ -33,6 +35,9 @@ func _on_reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_AT
 	level = 0
 	next_level = 3
 	current_exp = 0
+	
+	#coin stat
+	current_coins = 0
 	
 	#player stats
 	speed = PLAYER_SPEED
@@ -116,12 +121,18 @@ func _on_apply_item(item_type: String, value: int):
 				get_tree().paused = true
 				level_up()
 		"Coin":
-			pass
+			current_coins += value
+			print(current_coins)
 		"Medkit":
-			pass
+			if((current_health + value) > max_health):
+				current_health = max_health
+			else:
+				current_health += value
 			emit_signal("health_changed", current_health, max_health)
+			print(current_health, max_health)
 		"Cloak":
 			pass
+			#this one seems kinda tricky imma save it for later
 
 func apply_damage(amount):
 	current_health -= amount
