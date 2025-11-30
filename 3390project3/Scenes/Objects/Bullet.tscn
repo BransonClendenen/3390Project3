@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://kt0faqpkqbuq"]
 
 [ext_resource type="Script" uid="uid://dvadkr8y7chhv" path="res://Scripts/bullet.gd" id="1_nl5gi"]
-[ext_resource type="Texture2D" uid="uid://ctjddudl0hjkt" path="res://Sprites/BIG-BULLET.png" id="2_nl5gi"]
+[ext_resource type="Texture2D" uid="uid://8qfms6boolsc" path="res://Sprites/BIG-BULLET.png" id="2_nl5gi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nl5gi"]
 size = Vector2(24, 24)
@@ -15,6 +15,7 @@ scale = Vector2(2.181818, 1.9999999)
 texture = ExtResource("2_nl5gi")
 
 [node name="Disappear" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 autostart = true
 

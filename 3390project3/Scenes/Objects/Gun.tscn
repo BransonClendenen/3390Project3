@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://r2ueiljgmk1s"]
 
 [ext_resource type="Script" uid="uid://c84iv5xuohkwn" path="res://Scripts/gun.gd" id="1_2ccpx"]
-[ext_resource type="Texture2D" uid="uid://b65i3aqeux4m7" path="res://Sprites/BIG-GUN.png" id="2_2ccpx"]
+[ext_resource type="Texture2D" uid="uid://dphmny7pi5oin" path="res://Sprites/BIG-GUN.png" id="2_2ccpx"]
 
 [node name="Gun" type="Node2D"]
 scale = Vector2(-1, 1)
@@ -12,7 +12,7 @@ position = Vector2(-32, -18)
 texture = ExtResource("2_2ccpx")
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 2.5
+wait_time = 1.75
 one_shot = true
 
 [node name="Muzzle" type="Marker2D" parent="."]

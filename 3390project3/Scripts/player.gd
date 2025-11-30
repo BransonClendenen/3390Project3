@@ -58,12 +58,12 @@ func level_up():
 	#print("level up!", level, "current:",current_exp,"next_lvl",next_level)
 
 func _increase_player_stat(stat_name: String, amount: int):
-	print("increase stat called we fucking good")
-	print("spped",speed,"maxhealth",max_health,"currhealth",current_health,"damage",attack_damage,"spped",attack_speed)
+	#print("increase stat called we fucking good")
+	#print("spped",speed,"maxhealth",max_health,"currhealth",current_health,"damage",attack_damage,"spped",attack_speed)
 	#okay so this shit is dumb, just make a switch statement
 	match stat_name:
 		"speed":
-			speed += amount
+			speed += amount * 30
 		"max_health":
 			max_health += amount
 			if((current_health + amount) > max_health):
@@ -77,7 +77,7 @@ func _increase_player_stat(stat_name: String, amount: int):
 		"attack_speed":
 			attack_speed += amount
 			emit_signal("gun_attack_speed_changed",attack_speed)
-	print("spped",speed,"maxhealth",max_health,"currhealth",current_health,"damage",attack_damage,"spped",attack_speed)
+	#print("spped",speed,"maxhealth",max_health,"currhealth",current_health,"damage",attack_damage,"spped",attack_speed)
 
 #previous function before refactor, too large and stupid to be helpful
 #solution? make another large and stupid function but better
@@ -110,7 +110,7 @@ func _on_apply_item(item_type: String, value: int):
 	match item_type:
 		"EXP":
 			current_exp += value
-			print(current_exp)
+			#print(current_exp)
 			emit_signal("exp_changed", current_exp, next_level)
 			if current_exp >= next_level:
 				get_tree().paused = true
@@ -125,8 +125,8 @@ func _on_apply_item(item_type: String, value: int):
 
 func apply_damage(amount):
 	current_health -= amount
-	print("Player took ", amount, " damage!")
-	print(current_health)
+	#print("Player took ", amount, " damage!")
+	#print(current_health)
 	emit_signal("health_changed", current_health, max_health)
 	if current_health <= 0:
 		die()

@@ -2,7 +2,7 @@ extends Node2D
 
 const STANDARD_HEALTH = 1
 const STANDARD_DAMAGE = 1
-const STANDARD_SPEED = 150
+const STANDARD_SPEED = 120
 
 const increase_health = 1
 const increase_damage = 1

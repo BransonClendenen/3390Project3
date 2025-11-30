@@ -27,5 +27,5 @@ func die():
 
 func _on_attack_area_body_entered(body):
 	if body.is_in_group("Player"):
-		print("Player entered attack range")
+		#print("Player entered attack range")
 		body.apply_damage(damage)
