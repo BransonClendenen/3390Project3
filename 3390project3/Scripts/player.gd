@@ -109,8 +109,6 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-
-
 func _on_apply_item(item_type: String, value: int):
 	match item_type:
 		"EXP":
@@ -122,14 +120,14 @@ func _on_apply_item(item_type: String, value: int):
 				level_up()
 		"Coin":
 			current_coins += value
-			print(current_coins)
+			#print(current_coins)
 		"Medkit":
 			if((current_health + value) > max_health):
 				current_health = max_health
 			else:
 				current_health += value
 			emit_signal("health_changed", current_health, max_health)
-			print(current_health, max_health)
+			#print(current_health, max_health)
 		"Cloak":
 			pass
 			#this one seems kinda tricky imma save it for later

@@ -48,13 +48,16 @@ func _process(delta):
 		tick_accumulator -= 1.0
 		emit_signal("boss_timer_tick",boss_timer.time_left)
 	
-	if boss_timer.time_left == 300:
+	if boss_timer.time_left == total_time:
 		reset_difficulty()
 	var current_step = int((total_time - boss_timer.time_left) / interval)
 	if current_step > last_difficulty_step:
 		multiplier += 1
 		increase_difficulty(multiplier)
 		last_difficulty_step = current_step
-	elif current_step == last_difficulty_step:
+	elif current_step <= last_difficulty_step:
 		pass
-		#SPAWN BOSS RAAAAHHHH
+	if boss_timer.time_left <= 0:
+		enemy_manager.spawn_big_boss()
+		boss_timer.stop()
+		spawn_timer.stop()
