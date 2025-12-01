@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://crjbas1hi6vi4"]
+[gd_scene load_steps=3 format=3 uid="uid://crjbas1hi6vi4"]
 
 [ext_resource type="Script" uid="uid://qqc8fa1q8txk" path="res://Scripts/login.gd" id="1_leum0"]
+[ext_resource type="Texture2D" uid="uid://66fad0cy8mev" path="res://Sprites/MainMenuView.png" id="2_06ade"]
 
 [node name="Login" type="Control"]
 layout_mode = 3
@@ -11,39 +12,38 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_leum0")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
+[node name="MainMenuView" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_06ade")
+
+[node name="Buttons" type="Control" parent="MainMenuView"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 1, 1)
-
-[node name="Buttons" type="Control" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CreateAccount" type="Button" parent="ColorRect/Buttons"]
+[node name="CreateAccount" type="Button" parent="MainMenuView/Buttons"]
 layout_mode = 0
-offset_left = 130.0
-offset_top = 27.0
-offset_right = 273.0
-offset_bottom = 93.0
+offset_left = 751.0
+offset_top = 119.0
+offset_right = 922.0
+offset_bottom = 223.0
 text = "Create Account
 "
 
-[node name="SignIn" type="Button" parent="ColorRect/Buttons"]
+[node name="SignIn" type="Button" parent="MainMenuView/Buttons"]
 layout_mode = 0
-offset_left = 143.0
+offset_left = 237.0
 offset_top = 118.0
-offset_right = 258.0
-offset_bottom = 189.0
+offset_right = 408.69012
+offset_bottom = 224.0
 text = "Sign In"
 
-[connection signal="pressed" from="ColorRect/Buttons/CreateAccount" to="." method="_on_create_account_pressed"]
-[connection signal="pressed" from="ColorRect/Buttons/SignIn" to="." method="_on_sign_in_pressed"]
+[connection signal="pressed" from="MainMenuView/Buttons/CreateAccount" to="." method="_on_create_account_pressed"]
+[connection signal="pressed" from="MainMenuView/Buttons/SignIn" to="." method="_on_sign_in_pressed"]
