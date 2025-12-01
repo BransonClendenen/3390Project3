@@ -19,6 +19,14 @@ config/icon="res://Sprites/Placeholders/icon.svg"
 
 SceneManager="*res://Scripts/scene_manager.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
+[global_group]
+
+Enemies=""
+
 [input]
 
 Escape={

@@ -12,16 +12,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4n48u")
 
-[node name="Label" type="Label" parent="."]
+[node name="ExpAndHealth" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 3.0
-offset_right = 136.0
-offset_bottom = 52.0
-text = "THE HUZZ LABEL
-Health
-Exp
-"
+offset_right = 148.0
+offset_bottom = 102.0
+
+[node name="HealthLabel" type="Label" parent="ExpAndHealth"]
+layout_mode = 2
+
+[node name="ExpLabel" type="Label" parent="ExpAndHealth"]
+layout_mode = 2
 
 [node name="ButtonManager" type="Control" parent="."]
 anchors_preset = 0
@@ -34,5 +34,17 @@ offset_left = 1053.0
 offset_right = 1152.0
 offset_bottom = 89.0
 text = "Pause"
+
+[node name="Timer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 507.0
+offset_right = 598.0
+offset_bottom = 74.0
+
+[node name="TimeLabel" type="Label" parent="Timer"]
+layout_mode = 2
+
+[node name="BossLabel" type="Label" parent="Timer"]
+layout_mode = 2
 
 [connection signal="pressed" from="ButtonManager/Pause" to="." method="_on_pause_pressed"]

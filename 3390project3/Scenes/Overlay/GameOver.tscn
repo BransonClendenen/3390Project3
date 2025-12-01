@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://no471bq0oynn"]
+
+[ext_resource type="Script" uid="uid://d2ebgrikks6v0" path="res://Scripts/game_over.gd" id="1_dxd7h"]
+
+[node name="GameOver" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dxd7h")
+
+[node name="buttonManager" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Quit" type="Button" parent="buttonManager"]
+process_mode = 3
+layout_mode = 0
+offset_left = 499.0
+offset_top = 225.0
+offset_right = 541.0
+offset_bottom = 256.0
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 125.0
+offset_right = 515.0
+offset_bottom = 148.0
+text = "Oh NO you ded!"
+
+[node name="CoinsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 606.0
+offset_top = 126.0
+offset_right = 646.0
+offset_bottom = 149.0
+
+[connection signal="pressed" from="buttonManager/Quit" to="." method="_on_quit_pressed"]

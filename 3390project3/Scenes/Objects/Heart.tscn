@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://vguxffncj4qb"]
+
+[ext_resource type="Script" uid="uid://crujpywobdfvg" path="res://Scripts/coin.gd" id="1_g6psu"]
+[ext_resource type="Texture2D" uid="uid://kkm2gbtbt4jj" path="res://Sprites/Paul-Coin-fortnite.png" id="2_744al"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6kkok"]
+radius = 14.035668
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_g6psu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_744al")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6kkok")

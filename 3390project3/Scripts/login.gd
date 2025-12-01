@@ -1,9 +1,9 @@
 extends Control
 
-@onready var status_label = $StatusLabel
-@onready var password_field = $passwordField
-@onready var username_field = $usernameField
-@onready var http_request = $HTTPRequest
+#@onready var status_label = $StatusLabel
+#@onready var password_field = $passwordField
+#@onready var username_field = $usernameField
+#@onready var http_request = $HTTPRequest
 
 var API_BASE:="http://localhost:3000/api/auth"
 var auth_token:= ""

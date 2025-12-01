@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3bkcex6dxlrm"]
 
 [ext_resource type="Script" uid="uid://bcc5pq7hew82x" path="res://Scripts/player.gd" id="1_t86h6"]
-[ext_resource type="Texture2D" uid="uid://n1xcgw3w1dxk" path="res://Sprites/Placeholders/patrick.jpeg.jpeg" id="2_5f5w1"]
+[ext_resource type="Texture2D" uid="uid://dot0gara8c4wb" path="res://Sprites/PatMan.png" id="2_5f5w1"]
 [ext_resource type="PackedScene" uid="uid://r2ueiljgmk1s" path="res://Scenes/Objects/Gun.tscn" id="3_5f5w1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvv6r"]
-size = Vector2(118, 115)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5f5w1"]
+size = Vector2(101, 84.75)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_t86h6")
@@ -14,8 +14,10 @@ script = ExtResource("1_t86h6")
 texture = ExtResource("2_5f5w1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1.5)
-shape = SubResource("RectangleShape2D_kvv6r")
+position = Vector2(0.5, 37.375)
+shape = SubResource("RectangleShape2D_5f5w1")
 
 [node name="Gun" parent="." instance=ExtResource("3_5f5w1")]
-position = Vector2(-1, 0)
+position = Vector2(72, 41)
+
+[node name="Camera2D" type="Camera2D" parent="."]

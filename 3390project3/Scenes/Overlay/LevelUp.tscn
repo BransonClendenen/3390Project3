@@ -1,9 +1,73 @@
-[gd_scene format=3 uid="uid://dftupv5gfuoa"]
+[gd_scene load_steps=2 format=3 uid="uid://dftupv5gfuoa"]
+
+[ext_resource type="Script" uid="uid://c4hde7yexx8dr" path="res://Scripts/level_up.gd" id="1_kn86q"]
 
 [node name="LevelUp" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_kn86q")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 9.0
+offset_right = 689.0
+offset_bottom = 58.0
+text = "Helo I am the level up screen
+"
+
+[node name="Option1" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 375.0
+offset_right = 291.0
+offset_bottom = 456.0
+
+[node name="OptionLabel1" type="Label" parent="Option1"]
+layout_mode = 2
+text = "This should change"
+
+[node name="OptionButton1" type="Button" parent="Option1"]
+layout_mode = 2
+text = "Chose"
+
+[node name="Option2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 392.0
+offset_right = 597.0
+offset_bottom = 542.0
+
+[node name="OptionLabel2" type="Label" parent="Option2"]
+layout_mode = 2
+text = "This should change"
+
+[node name="OptionButton2" type="Button" parent="Option2"]
+layout_mode = 2
+text = "Chose
+"
+
+[node name="Option3" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 753.0
+offset_top = 389.0
+offset_right = 950.0
+offset_bottom = 447.0
+
+[node name="OptionLabel3" type="Label" parent="Option3"]
+layout_mode = 2
+text = "This Should Change"
+
+[node name="OptionButton3" type="Button" parent="Option3"]
+layout_mode = 2
+text = "Chose
+"
+
+[connection signal="pressed" from="Option1/OptionButton1" to="." method="_on_option_1_pressed"]
+[connection signal="pressed" from="Option2/OptionButton2" to="." method="_on_option_2_pressed"]
+[connection signal="pressed" from="Option3/OptionButton3" to="." method="_on_option_3_pressed"]

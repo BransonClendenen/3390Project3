@@ -10,6 +10,17 @@ extends Node
 @onready var ui_layer: Control = null
 @onready var overlay_layer: Control = null
 
+#player stats
+var player
+const PLAYER_HEALTH: int = 3;
+const PLAYER_SPEED: int = 300;
+const PLAYER_ATTACK_DAMAGE: int = 1;
+const PLAYER_ATTACK_SPEED: int = 1;
+
+var ui
+var huzz
+var enemy_manager
+
 func _ready():
 	setup_layers()
 	load_ui("res://Scenes/UI/Login.tscn")
@@ -65,3 +76,48 @@ func hide_all_overlays():
 	overlay_stack.clear()
 	overlay_scene = null
 	print("All overlays cleared")
+
+signal reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE)
+
+func game_start():
+	player = get_tree().get_first_node_in_group("Player")
+	player.show_level_up_overlay.connect(show_level_up)
+	player.display_coins.connect(send_coins)
+	
+	#if ANYTHING is moved in tree you have to change number in get_child()
+	#spahgetti code to rule all spahgetti code
+	#anyways this defines variables and makes connections for the huzz
+	enemy_manager = game_scene.get_child(1)
+	huzz = overlay_scene
+	player.health_changed.connect(huzz.update_health)
+	player.exp_changed.connect(huzz.update_exp)
+	enemy_manager.boss_timer_tick.connect(huzz.update_timer)
+
+	#TODO replace signal variable with varibles after updated by profile stats
+	emit_signal("reset_stats",PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE)
+	#needs to reset player stats at the start of the game
+	#needs to also be added/multiplied by profile stats
+
+#so as seen in game_start() theres a way easier way to make connections that only
+#takes 5 lines of code for 3 signals between two objects, instead of
+#all this bullshit i wrote below, the more you learn
+
+#this is all for the lvl up overlay
+signal randomize_level_up()
+
+func show_level_up():
+	#print(overlay_stack,overlay_scene,overlay_layer)
+	ui = overlay_scene
+	ui.increase_stat.connect(ui_to_player_stat)
+	emit_signal("randomize_level_up")
+
+signal increase_player_stat(upgrade_name: String,upgrade_amount: int)
+
+func ui_to_player_stat(upgrade_name,upgrade_amount):
+	emit_signal("increase_player_stat",upgrade_name,upgrade_amount)
+#end lvl up ui
+
+signal sending_coins(current_coins)
+
+func send_coins(current_coins):
+	emit_signal("sending_coins",current_coins)

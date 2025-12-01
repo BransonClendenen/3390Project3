@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce62okt0xmav"]
+[gd_scene load_steps=3 format=3 uid="uid://ce62okt0xmav"]
 
 [ext_resource type="Script" uid="uid://c8oruik0up2an" path="res://Scripts/root.gd" id="1_b57eb"]
+[ext_resource type="Texture2D" uid="uid://bq8h6gqssvg8i" path="res://Sprites/Dungeon-Floor.png" id="2_achix"]
 
 [node name="Root" type="Control"]
 layout_mode = 3
@@ -10,6 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b57eb")
+
+[node name="MapSprites" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Parallax2D" type="Parallax2D" parent="MapSprites"]
+follow_viewport = false
+
+[node name="DungeonFloor" type="Sprite2D" parent="MapSprites/Parallax2D"]
+texture = ExtResource("2_achix")
 
 [node name="GameLayer" type="Node2D" parent="."]
 
