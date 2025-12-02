@@ -1,6 +1,5 @@
 extends Node
 
-#@onready var root_node = get_tree().root.get_node("")
 @onready var root_node: Node = null
 @onready var game_scene: Node = null
 @onready var overlay_scene: Node = null

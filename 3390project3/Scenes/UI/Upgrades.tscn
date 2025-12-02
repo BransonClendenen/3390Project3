@@ -1,18 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgja44u2v5scd"]
+[gd_scene load_steps=3 format=3 uid="uid://bgja44u2v5scd"]
 
 [ext_resource type="Script" uid="uid://bcbr06byj07y8" path="res://Scripts/upgrades.gd" id="1_6ahmb"]
+[ext_resource type="Texture2D" uid="uid://ff4mqbqitjxe" path="res://Sprites/UpgradeBackground.png" id="2_jiyet"]
 
 [node name="Upgrades" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_6ahmb")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "oh my god it workkssss
-"
+[node name="UpgradeBackground" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_jiyet")
 
 [node name="ButtonManager" type="Control" parent="."]
 anchors_preset = 0
@@ -21,10 +19,62 @@ offset_bottom = 40.0
 
 [node name="Back" type="Button" parent="ButtonManager"]
 layout_mode = 0
-offset_left = 186.0
-offset_top = 8.0
-offset_right = 239.0
-offset_bottom = 59.0
+offset_left = 779.0
+offset_top = 14.0
+offset_right = 938.0
+offset_bottom = 91.0
 text = "BaCk"
 
+[node name="Health" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 598.0
+offset_right = 215.0
+offset_bottom = 639.0
+text = "1/8"
+
+[node name="Damage" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 599.0
+offset_right = 470.0
+offset_bottom = 640.0
+text = "1/8"
+
+[node name="AttackSpeed" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 662.0
+offset_top = 598.0
+offset_right = 727.0
+offset_bottom = 639.0
+text = "1/8"
+
+[node name="MoveSpeed" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 919.0
+offset_top = 598.0
+offset_right = 984.0
+offset_bottom = 639.0
+text = "1/8"
+
+[node name="Profile" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 19.0
+offset_right = 296.0
+offset_bottom = 104.0
+
+[node name="Username" type="Label" parent="Profile"]
+layout_mode = 2
+text = "username"
+
+[node name="Coins" type="Label" parent="Profile"]
+layout_mode = 2
+text = "Coins: 1 billion
+"
+
 [connection signal="pressed" from="ButtonManager/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ButtonManager/Health" to="." method="_on_health_pressed"]
+[connection signal="pressed" from="ButtonManager/Damage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="ButtonManager/AttackSpeed" to="." method="_on_attack_speed_pressed"]
+[connection signal="pressed" from="ButtonManager/MoveSpeed" to="." method="_on_move_speed_pressed"]
