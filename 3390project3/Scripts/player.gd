@@ -23,6 +23,8 @@ signal gun_attack_damage_changed(attack_damage)
 signal gun_attack_speed_changed(attack_speed)
 #gets called in level_up() and starts the chain for the lvl up screen and logic
 signal show_level_up_overlay()
+#called to display coins on end game screen
+signal display_coins(current_coins)
 
 func _ready():
 	SceneManager.reset_stats.connect(_on_reset_stats)
@@ -139,8 +141,6 @@ func apply_damage(amount):
 	emit_signal("health_changed", current_health, max_health)
 	if current_health <= 0:
 		die()
-
-signal display_coins(current_coins)
 
 func die():
 	SceneManager.load_overlay("res://Scenes/Overlay/GameOver.tscn")

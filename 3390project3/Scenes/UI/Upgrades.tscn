@@ -19,10 +19,10 @@ offset_bottom = 40.0
 
 [node name="Back" type="Button" parent="ButtonManager"]
 layout_mode = 0
-offset_left = 744.0
-offset_top = 119.0
-offset_right = 903.0
-offset_bottom = 196.0
+offset_left = 779.0
+offset_top = 14.0
+offset_right = 938.0
+offset_bottom = 91.0
 text = "BaCk"
 
 [node name="Health" type="Button" parent="ButtonManager"]
@@ -57,4 +57,24 @@ offset_right = 984.0
 offset_bottom = 639.0
 text = "1/8"
 
+[node name="Profile" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 19.0
+offset_right = 296.0
+offset_bottom = 104.0
+
+[node name="Username" type="Label" parent="Profile"]
+layout_mode = 2
+text = "username"
+
+[node name="Coins" type="Label" parent="Profile"]
+layout_mode = 2
+text = "Coins: 1 billion
+"
+
 [connection signal="pressed" from="ButtonManager/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ButtonManager/Health" to="." method="_on_health_pressed"]
+[connection signal="pressed" from="ButtonManager/Damage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="ButtonManager/AttackSpeed" to="." method="_on_attack_speed_pressed"]
+[connection signal="pressed" from="ButtonManager/MoveSpeed" to="." method="_on_move_speed_pressed"]
