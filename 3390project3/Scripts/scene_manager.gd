@@ -9,6 +9,11 @@ extends Node
 @onready var ui_layer: Control = null
 @onready var overlay_layer: Control = null
 
+#this will be commented out in login.gd temp
+var API_BASE := "http://localhost:3000/api/auth"
+var auth_token := ""
+var last_action := ""
+
 #player stats
 var player
 const PLAYER_HEALTH: int = 3;
