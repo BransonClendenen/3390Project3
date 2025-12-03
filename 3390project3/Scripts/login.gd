@@ -107,8 +107,11 @@ func _on_request_completed(_result:int, response_code:int, _headers:PackedString
 			err_msg = str(response["error"])
 		status.text = "Request error: %s" % err_msg
 
+signal set_username(String)
+
 func _on_sign_in_pressed() -> void:
 	_on_LoginButton_pressed()
+	emit_signal("set_username",username_field.text)
 	SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn")
 
 #func _on_LoginButton_pressed():

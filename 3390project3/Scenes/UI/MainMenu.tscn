@@ -45,6 +45,11 @@ offset_bottom = 336.0
 text = "seTTingS
 "
 
+[node name="UsernameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 135.0
+offset_bottom = 33.0
+
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ButtonManager/Upgrades" to="." method="_on_upgrades_pressed"]
 [connection signal="pressed" from="ButtonManager/SignOut" to="." method="_on_sign_out_pressed"]

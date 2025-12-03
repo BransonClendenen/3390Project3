@@ -14,6 +14,7 @@ var http_request: HTTPRequest
 var API_BASE = "http://localhost:3000/api/auth"
 var auth_token = ""
 var last_action = ""
+var username = ""
 
 #player stats
 var player
@@ -22,6 +23,7 @@ const PLAYER_SPEED: int = 300;
 const PLAYER_ATTACK_DAMAGE: int = 1;
 const PLAYER_ATTACK_SPEED: int = 1;
 
+#scene variables
 var ui
 var huzz
 var enemy_manager
@@ -29,6 +31,7 @@ var enemy_manager
 func _ready():
 	setup_layers()
 	load_ui("res://Scenes/UI/Login.tscn")
+	ui_layer.get_child(0).set_username.connect(display_username)
 
 func setup_layers():
 	root_node = get_tree().current_scene
@@ -127,3 +130,6 @@ signal sending_coins(current_coins)
 
 func send_coins(current_coins):
 	emit_signal("sending_coins",current_coins)
+
+func display_username(name):
+	username = name

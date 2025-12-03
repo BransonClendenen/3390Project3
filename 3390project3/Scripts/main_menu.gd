@@ -2,9 +2,11 @@ extends Control
 
 #var settingsMenuScene: PackedScene = preload("res://UI/SettingsMenu.tscn")
 #var settingsMenuInstance: Control = null
+@onready var username_label: Label = $UsernameLabel
 
 func _ready() -> void:
-	pass
+	username_label.text = SceneManager.username
+	
 
 func _process(delta: float) -> void:
 	pass
