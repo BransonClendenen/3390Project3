@@ -8,6 +8,9 @@ func _on_back_pressed() -> void:
 
 func _on_health_pressed() -> void:
 	pass # Replace with function body.
+	#these functions will update api variables
+	#as well as varibales from scene manager, so another call is not needed each 
+	#time the game is run (or whatever is easier idgaf)
 
 func _on_damage_pressed() -> void:
 	pass # Replace with function body.

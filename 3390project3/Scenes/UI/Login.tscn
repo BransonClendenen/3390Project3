@@ -51,23 +51,24 @@ offset_bottom = 40.0
 
 [node name="Username" type="Label" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
+text = "Username:"
 
 [node name="usernameField" type="TextEdit" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
 
 [node name="Password" type="Label" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
+text = "Password:"
 
 [node name="passwordField" type="TextEdit" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
 
 [node name="Status" type="Label" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
+text = "Status:"
 
-[node name="statusLabel" type="TextEdit" parent="MainMenuView/VBoxContainer/Status"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="statusLabel" type="TextEdit" parent="MainMenuView/VBoxContainer"]
+layout_mode = 2
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
