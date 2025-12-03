@@ -4,7 +4,7 @@ extends Control
 @onready var http_request: HTTPRequest = $HTTPRequest
 @onready var username_field: TextEdit = $MainMenuView/VBoxContainer/usernameField
 @onready var password_field: TextEdit = $MainMenuView/VBoxContainer/passwordField
-
+@onready var status: Label = $MainMenuView/VBoxContainer/Status
 
 
 var API_BASE:= SceneManager.API_BASE
@@ -37,17 +37,23 @@ func _on_LoginButton_pressed() -> void:
 		"password": password_field.text
 		}
 		
-	status_label.text = "you shouldnt be logging in with a loser like me, or should you"
+	status.text = "you shouldnt be logging in with a loser like me, or should you"
 	var headers := ["Content-Type: application/json"]
 	var url := API_BASE + "/login"
 	
 	var err := http_request.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(payload))
 	if err != OK:
-		status_label.text = "Request error: %d" % err
+		status.text = "Request error: %d" % err
 
 
 
 func _on_create_account_pressed() -> void:
+	_on_Create_Account()
+	username_field.text = ""
+	password_field.text = ""
+	status.text = "account created, please log in"
+
+func _on_Create_Account() -> void:
 	last_action = "register" 
 	SceneManager.last_action = last_action
 	#SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn")
@@ -56,21 +62,24 @@ func _on_create_account_pressed() -> void:
 		"username": username_field.text,
 		"password": password_field.text
 	}
-	status_label.text = "Creating account!"
+	print("CREATE ACCOUNT PAYLOAD:", payload)
+	status.text = "Creating account!"
 	
 	var headers := ["Content-Type: application/json"]
 	var url := API_BASE + "/register"
 	
 	var err := http_request.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(payload))
 	if err != OK:
-		status_label.text = "Request error: %d" % err
+		status.text = "Request error: %d" % err
 		
 func _on_request_completed(_result:int, response_code:int, _headers:PackedStringArray, body:PackedByteArray) -> void:
 	var raw := body.get_string_from_utf8()
+	print("RAW RESPONSE FROM API:", raw, " CODE:", response_code) #debag
+	
 	var response = JSON.parse_string(raw)
 	
 	if typeof(response) != TYPE_DICTIONARY:
-		status_label.text = "Invalid response: " + raw
+		status.text = "Invalid response: " + raw
 		return
 
 	if response_code >= 200 and response_code < 300:
@@ -87,14 +96,12 @@ func _on_request_completed(_result:int, response_code:int, _headers:PackedString
 
 
 			if last_action == "login":
-				status_label.text = "Logged in as %s" % username
+				status.text = "Logged in as %s" % username
 			elif last_action == "register":
-				status_label.text = "Account made for %s" % username
+				status.text = "Account made for %s" % username
+				SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn") #goes back to main menu automatically after creating the acc
 			else:
 				status_label.text = "Success for %s" % username
-				
-			# here is where you could auto-swap to main menu ask branso first:
-			#SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn")
 
 		else:
 			status_label.text = "Success, but no token in response :(" # sus
@@ -105,6 +112,7 @@ func _on_request_completed(_result:int, response_code:int, _headers:PackedString
 		status_label.text = "Request error: %s" % err_msg
 
 func _on_sign_in_pressed() -> void:
+	_on_LoginButton_pressed()
 	SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn")
 
 #func _on_LoginButton_pressed():
