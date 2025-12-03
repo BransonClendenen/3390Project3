@@ -23,6 +23,13 @@ const PLAYER_SPEED: int = 300;
 const PLAYER_ATTACK_DAMAGE: int = 1;
 const PLAYER_ATTACK_SPEED: int = 1;
 
+#profile stats
+var profile_coins: int
+var profile_max_health: int
+var profile_speed: int
+var profile_attack_damage: int
+var profile_attack_speed: int
+
 #scene variables
 var ui
 var huzz
@@ -32,6 +39,7 @@ func _ready():
 	setup_layers()
 	load_ui("res://Scenes/UI/Login.tscn")
 	ui_layer.get_child(0).set_username.connect(display_username)
+	
 
 func setup_layers():
 	root_node = get_tree().current_scene
@@ -39,6 +47,12 @@ func setup_layers():
 	ui_layer = root_node.get_node("UILayer/UIContainer")
 	overlay_layer = root_node.get_node("OverlayLayer/OverlayContainer")
 	http_request = root_node.get_child(4)
+
+func setup_profile_stats():
+	#here the api will pull the data
+	#the api should return an array of some sort
+	#the profile stats (delcared above) get set to array values
+	pass
 
 func load_scene(scene_path: String):
 	if not root_node:

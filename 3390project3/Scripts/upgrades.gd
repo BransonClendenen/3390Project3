@@ -3,6 +3,10 @@ extends Control
 @onready var username: Label = $Profile/Username
 @onready var coins: Label = $Profile/Coins
 
+func _ready() -> void:
+	username.text = "Good Evening " + SceneManager.username
+	coins.text = "Coins: "
+
 func _on_back_pressed() -> void:
 	SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn")
 
