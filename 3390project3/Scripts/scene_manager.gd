@@ -10,9 +10,10 @@ extends Node
 @onready var overlay_layer: Control = null
 
 #this will be commented out in login.gd temp
-var API_BASE := "http://localhost:3000/api/auth"
-var auth_token := ""
-var last_action := ""
+var http_request: HTTPRequest 
+var API_BASE = "http://localhost:3000/api/auth"
+var auth_token = ""
+var last_action = ""
 
 #player stats
 var player
@@ -34,6 +35,7 @@ func setup_layers():
 	game_layer = root_node.get_node("GameLayer")
 	ui_layer = root_node.get_node("UILayer/UIContainer")
 	overlay_layer = root_node.get_node("OverlayLayer/OverlayContainer")
+	http_request = root_node.get_child(4)
 
 func load_scene(scene_path: String):
 	if not root_node:

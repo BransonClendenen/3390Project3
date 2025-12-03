@@ -67,7 +67,5 @@ layout_mode = 2
 layout_mode = 2
 text = "Status:"
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
-
 [connection signal="pressed" from="MainMenuView/Buttons/CreateAccount" to="." method="_on_create_account_pressed"]
 [connection signal="pressed" from="MainMenuView/Buttons/SignIn" to="." method="_on_sign_in_pressed"]
