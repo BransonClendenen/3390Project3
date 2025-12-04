@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce62okt0xmav"]
+[gd_scene load_steps=7 format=3 uid="uid://ce62okt0xmav"]
 
 [ext_resource type="Script" uid="uid://c8oruik0up2an" path="res://Scripts/root.gd" id="1_b57eb"]
 [ext_resource type="Texture2D" uid="uid://bq8h6gqssvg8i" path="res://Sprites/Dungeon-Floor.png" id="2_achix"]
+[ext_resource type="PackedScene" uid="uid://dcxf07elqvg8e" path="res://Scenes/Game/AudioManager.tscn" id="3_3glv5"]
+[ext_resource type="Texture2D" uid="uid://b1c04jrnih4pw" path="res://Sprites/TopBottomWall.png" id="3_4c88h"]
+[ext_resource type="Texture2D" uid="uid://p67tijtbbcbw" path="res://Sprites/RightLeftWall.png" id="4_ht0re"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ht0re"]
+size = Vector2(39.980003, 9.989999)
 
 [node name="Root" type="Control"]
 layout_mode = 3
@@ -20,6 +26,54 @@ follow_viewport = false
 
 [node name="DungeonFloor" type="Sprite2D" parent="MapSprites/Parallax2D"]
 texture = ExtResource("2_achix")
+
+[node name="Top" type="Area2D" parent="MapSprites/Parallax2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapSprites/Parallax2D/Top"]
+position = Vector2(0, -1920)
+scale = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_ht0re")
+
+[node name="Area2D" type="Sprite2D" parent="MapSprites/Parallax2D/Top"]
+position = Vector2(0, -1920)
+texture = ExtResource("3_4c88h")
+
+[node name="Bottom" type="Area2D" parent="MapSprites/Parallax2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapSprites/Parallax2D/Bottom"]
+position = Vector2(0, 1920)
+scale = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_ht0re")
+
+[node name="Area2D" type="Sprite2D" parent="MapSprites/Parallax2D/Bottom"]
+position = Vector2(0, 1920)
+rotation = 3.1415927
+texture = ExtResource("3_4c88h")
+
+[node name="Left" type="Area2D" parent="MapSprites/Parallax2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapSprites/Parallax2D/Left"]
+position = Vector2(-1970, 0)
+rotation = 1.5707964
+scale = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_ht0re")
+
+[node name="Area2D" type="Sprite2D" parent="MapSprites/Parallax2D/Left"]
+position = Vector2(-1970, 0)
+texture = ExtResource("4_ht0re")
+
+[node name="Right" type="Area2D" parent="MapSprites/Parallax2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapSprites/Parallax2D/Right"]
+position = Vector2(1970, 0)
+rotation = 1.5707964
+scale = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_ht0re")
+
+[node name="Area2D" type="Sprite2D" parent="MapSprites/Parallax2D/Right"]
+position = Vector2(1970, 0)
+rotation = 3.1415927
+texture = ExtResource("4_ht0re")
 
 [node name="GameLayer" type="Node2D" parent="."]
 
@@ -43,3 +97,5 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="AudioManager" parent="." instance=ExtResource("3_3glv5")]

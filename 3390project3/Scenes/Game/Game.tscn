@@ -1,13 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://duenb7yasxax"]
+[gd_scene load_steps=9 format=3 uid="uid://duenb7yasxax"]
 
 [ext_resource type="Script" uid="uid://c5p2op6oke3ad" path="res://Scripts/game.gd" id="1_gwu2e"]
 [ext_resource type="PackedScene" uid="uid://c3bkcex6dxlrm" path="res://Scenes/Objects/Player.tscn" id="1_rdw05"]
 [ext_resource type="Script" uid="uid://b3fe7b4x2dlf1" path="res://Scripts/enemy_system.gd" id="3_ln2h6"]
 [ext_resource type="Script" uid="uid://dk3bce2sdje6e" path="res://Scripts/enemy_manager.gd" id="4_y3kpf"]
 [ext_resource type="Script" uid="uid://dfqef8h3v6nc5" path="res://Scripts/item_manager.gd" id="5_y3kpf"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rdw05"]
-normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gwu2e"]
 
@@ -54,10 +51,6 @@ script = ExtResource("5_y3kpf")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 z_index = 1
-
-[node name="TopWall" type="CollisionShape2D" parent="Walls"]
-position = Vector2(0, -1500)
-shape = SubResource("WorldBoundaryShape2D_rdw05")
 
 [node name="LeftWall" type="CollisionShape2D" parent="Walls"]
 position = Vector2(-1500, 0)
