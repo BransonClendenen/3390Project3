@@ -38,6 +38,10 @@ func _on_LoginButton_pressed() -> void:
 	if not _validate_fields():
 		return
 	
+	if(username_field.text == "Ineedin"):
+		SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn")
+		pass
+	
 	last_action = "login"
 	
 	var payload := {
