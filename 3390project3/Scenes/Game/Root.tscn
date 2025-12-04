@@ -34,7 +34,7 @@ position = Vector2(0, -1920)
 scale = Vector2(100, 100)
 shape = SubResource("RectangleShape2D_ht0re")
 
-[node name="Area2D" type="Sprite2D" parent="MapSprites/Parallax2D/Top"]
+[node name="Wall" type="Sprite2D" parent="MapSprites/Parallax2D/Top"]
 position = Vector2(0, -1920)
 texture = ExtResource("3_4c88h")
 
@@ -45,7 +45,7 @@ position = Vector2(0, 1920)
 scale = Vector2(100, 100)
 shape = SubResource("RectangleShape2D_ht0re")
 
-[node name="Area2D" type="Sprite2D" parent="MapSprites/Parallax2D/Bottom"]
+[node name="Wall" type="Sprite2D" parent="MapSprites/Parallax2D/Bottom"]
 position = Vector2(0, 1920)
 rotation = 3.1415927
 texture = ExtResource("3_4c88h")
@@ -58,7 +58,7 @@ rotation = 1.5707964
 scale = Vector2(100, 100)
 shape = SubResource("RectangleShape2D_ht0re")
 
-[node name="Area2D" type="Sprite2D" parent="MapSprites/Parallax2D/Left"]
+[node name="Wall" type="Sprite2D" parent="MapSprites/Parallax2D/Left"]
 position = Vector2(-1970, 0)
 texture = ExtResource("4_ht0re")
 
@@ -70,7 +70,7 @@ rotation = 1.5707964
 scale = Vector2(100, 100)
 shape = SubResource("RectangleShape2D_ht0re")
 
-[node name="Area2D" type="Sprite2D" parent="MapSprites/Parallax2D/Right"]
+[node name="Wall" type="Sprite2D" parent="MapSprites/Parallax2D/Right"]
 position = Vector2(1970, 0)
 rotation = 3.1415927
 texture = ExtResource("4_ht0re")
