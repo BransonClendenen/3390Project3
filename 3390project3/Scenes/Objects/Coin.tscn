@@ -1,15 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7ko8vi3uvwjt"]
 
 [ext_resource type="Script" uid="uid://crujpywobdfvg" path="res://Scripts/coin.gd" id="1_6164g"]
-[ext_resource type="Texture2D" uid="uid://kkm2gbtbt4jj" path="res://Sprites/Paul-Coin-fortnite.png" id="2_ive63"]
+[ext_resource type="Texture2D" uid="uid://bt2bup7wmwxu7" path="res://Sprites/Paul-Coin-fortnite.png" id="2_ive63"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6kkok"]
-radius = 14.035668
+radius = 20.0
 
 [node name="Coin" type="Area2D"]
 script = ExtResource("1_6164g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("2_ive63")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
