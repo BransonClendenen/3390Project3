@@ -17,36 +17,47 @@ var last_action = ""
 var username = ""
 
 #player stats
+
 var player
 const PLAYER_HEALTH: int = 3;
 const PLAYER_SPEED: int = 300;
 const PLAYER_ATTACK_DAMAGE: int = 1;
 const PLAYER_ATTACK_SPEED: int = 1;
-
 #profile stats
 var profile_coins: int
 var profile_max_health: int
 var profile_speed: int
 var profile_attack_damage: int
 var profile_attack_speed: int
-
 #scene variables
 var ui
 var huzz
 var enemy_manager
 
-func _ready():
+func _ready() -> void:
 	setup_layers()
 	load_ui("res://Scenes/UI/Login.tscn")
-	ui_layer.get_child(0).set_username.connect(display_username)
-	
 
-func setup_layers():
+func setup_layers() -> void:
 	root_node = get_tree().current_scene
 	game_layer = root_node.get_node("GameLayer")
 	ui_layer = root_node.get_node("UILayer/UIContainer")
 	overlay_layer = root_node.get_node("OverlayLayer/OverlayContainer")
-	http_request = root_node.get_child(4)
+	#http_request = root_node.get_child(4)
+	
+	if root_node.has_node("HTTPRequest"):
+		http_request = root_node.get_node("HTTPRequest") as HTTPRequest #shared http req for the whole game 
+	else:
+		# fallback to old position if it evne exists
+		var candidate = null
+		if root_node.get_child_count() > 4:
+			candidate = root_node.get_child(4)
+		if candidate is HTTPRequest:
+			http_request = candidate
+		else:
+			http_request = HTTPRequest.new()
+			http_request.name = "HTTPRequest"
+			root_node.add_child(http_request)
 
 func setup_profile_stats():
 	#here the api will pull the data
@@ -129,7 +140,7 @@ func game_start():
 signal randomize_level_up()
 
 func show_level_up():
-	#print(overlay_stack,overlay_scene,overlay_layer)
+	print(overlay_stack,overlay_scene,overlay_layer)
 	ui = overlay_scene
 	ui.increase_stat.connect(ui_to_player_stat)
 	emit_signal("randomize_level_up")
@@ -145,5 +156,5 @@ signal sending_coins(current_coins)
 func send_coins(current_coins):
 	emit_signal("sending_coins",current_coins)
 
-func display_username(name):
-	username = name
+#func display_username(name):
+#	username = name #no longer using
