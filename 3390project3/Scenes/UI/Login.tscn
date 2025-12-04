@@ -46,8 +46,14 @@ offset_bottom = 224.0
 text = "Sign In"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuView"]
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(200, 150)
+offset_left = -365.0
+offset_top = 9.0
+offset_right = 376.0
+offset_bottom = 192.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
 
 [node name="Username" type="Label" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
@@ -55,6 +61,7 @@ text = "Username:"
 
 [node name="usernameField" type="TextEdit" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Password" type="Label" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
@@ -62,6 +69,7 @@ text = "Password:"
 
 [node name="passwordField" type="TextEdit" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Status" type="Label" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
