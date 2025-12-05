@@ -111,6 +111,8 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+signal apply_cloak()
+
 func _on_apply_item(item_type: String, value: int):
 	match item_type:
 		"EXP":
@@ -131,8 +133,7 @@ func _on_apply_item(item_type: String, value: int):
 			emit_signal("health_changed", current_health, max_health)
 			#print(current_health, max_health)
 		"Cloak":
-			pass
-			#this one seems kinda tricky imma save it for later
+			emit_signal("apply_cloak")
 
 func apply_damage(amount):
 	current_health -= amount

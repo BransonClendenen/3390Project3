@@ -4,6 +4,8 @@ extends Node
 @onready var game_scene: Node = null
 @onready var overlay_scene: Node = null
 @onready var overlay_stack: Array = []
+@onready var sfx_container: Node = null
+@onready var music_player: AudioStreamPlayer2D = null
 
 @onready var game_layer: Node2D = null
 @onready var ui_layer: Control = null
@@ -17,22 +19,27 @@ var last_action = ""
 var username = ""
 
 #player stats
-
 var player
 const PLAYER_HEALTH: int = 3;
 const PLAYER_SPEED: int = 300;
 const PLAYER_ATTACK_DAMAGE: int = 1;
 const PLAYER_ATTACK_SPEED: int = 1;
+
 #profile stats
 var profile_coins: int
 var profile_max_health: int
 var profile_speed: int
 var profile_attack_damage: int
 var profile_attack_speed: int
+
 #scene variables
 var ui
 var huzz
 var enemy_manager
+
+#settings var
+var master_volume: float = 20.0
+
 
 func _ready() -> void:
 	setup_layers()
@@ -43,6 +50,8 @@ func setup_layers() -> void:
 	game_layer = root_node.get_node("GameLayer")
 	ui_layer = root_node.get_node("UILayer/UIContainer")
 	overlay_layer = root_node.get_node("OverlayLayer/OverlayContainer")
+	sfx_container = root_node.get_node("SFXContainer")
+	music_player = root_node.get_node("MusicPlayer")
 	#http_request = root_node.get_child(4)
 	
 	if root_node.has_node("HTTPRequest"):
@@ -88,7 +97,6 @@ func load_ui(scene_path: String):
 	var new_ui_layer = load(scene_path).instantiate()
 	new_ui_layer.size = get_viewport().size
 	ui_layer.add_child(new_ui_layer)
-	
 
 func load_overlay(scene_path: String):
 	var new_overlay_layer = load(scene_path).instantiate()
@@ -117,6 +125,7 @@ func game_start():
 	player = get_tree().get_first_node_in_group("Player")
 	player.show_level_up_overlay.connect(show_level_up)
 	player.display_coins.connect(send_coins)
+	player.apply_cloak.connect(apply_cloak)
 	
 	#if ANYTHING is moved in tree you have to change number in get_child()
 	#spahgetti code to rule all spahgetti code
@@ -158,3 +167,8 @@ func send_coins(current_coins):
 
 #func display_username(name):
 #	username = name #no longer using
+
+signal cloak_to_enemy()
+
+func apply_cloak():
+	emit_signal("cloak_to_enemy")

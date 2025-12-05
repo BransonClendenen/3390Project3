@@ -18,6 +18,7 @@ config/icon="res://Sprites/Placeholders/icon.svg"
 [autoload]
 
 SceneManager="*res://Scripts/scene_manager.gd"
+AudioManager="*res://Scripts/audio_manager.gd"
 
 [display]
 

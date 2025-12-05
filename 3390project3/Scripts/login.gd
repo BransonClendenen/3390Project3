@@ -40,6 +40,7 @@ func _on_LoginButton_pressed() -> void:
 	
 	if(username_field.text == "Ineedin"):
 		SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn")
+		AudioManager.play_sfx("res://Sounds/mi-bombo.mp3")
 		pass
 	
 	last_action = "login"

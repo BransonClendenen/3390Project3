@@ -33,16 +33,6 @@ offset_right = 488.0
 offset_bottom = 167.0
 text = "Reumse"
 
-[node name="Settings" type="Button" parent="Buttons"]
-process_mode = 3
-layout_mode = 0
-offset_left = 401.0
-offset_top = 181.0
-offset_right = 484.0
-offset_bottom = 240.0
-text = "Seppings
-"
-
 [node name="Quit" type="Button" parent="Buttons"]
 process_mode = 3
 layout_mode = 0
@@ -53,5 +43,4 @@ offset_bottom = 338.0
 text = "Qib"
 
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Buttons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]

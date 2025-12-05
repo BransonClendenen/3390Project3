@@ -19,6 +19,8 @@ func _on_start_game_pressed() -> void:
 	SceneManager.load_scene("res://Scenes/Game/Game.tscn")
 	SceneManager.load_overlay("res://Scenes/Overlay/Huzz.tscn")
 	SceneManager.game_start()
+	AudioManager.stop_music()
+	AudioManager.play_music("res://Sounds/game_music.mp3")
 
 func _on_sign_out_pressed() -> void:
 	SceneManager.auth_token = ""
@@ -28,5 +30,5 @@ func _on_sign_out_pressed() -> void:
 func _on_upgrades_pressed() -> void:
 	SceneManager.load_ui("res://Scenes/UI/Upgrades.tscn")
 
-func _on_settings_pressed() -> void:
-	SceneManager.load_overlay("res://Scenes/Overlay/SettingsMenu.tscn")
+#func _on_settings_pressed() -> void:
+	#SceneManager.load_overlay("res://Scenes/Overlay/SettingsMenu.tscn")

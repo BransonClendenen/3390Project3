@@ -12,6 +12,20 @@ var enemy_speed := 0
 
 var active_enemies: Array = []
 
+func _ready():
+	SceneManager.cloak_to_enemy.connect(apply_cloak)
+
+#functions for the invince cloak(by god it is awful)
+func apply_cloak():
+	for enemy in active_enemies:
+		enemy.damage = 0
+	await get_tree().create_timer(10).timeout
+	unapply_cloak()
+
+func unapply_cloak():
+	for enemy in active_enemies:
+		enemy.damage = enemy_damage
+
 func spawn_enemy():
 	var enemy = enemy_scene.instantiate()
 	
