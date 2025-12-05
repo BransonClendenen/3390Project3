@@ -68,11 +68,16 @@ func setup_layers() -> void:
 			http_request.name = "HTTPRequest"
 			root_node.add_child(http_request)
 
-func setup_profile_stats():
+func apply_profile_stats(user: Dictionary) -> void: #consume prof stats
 	#here the api will pull the data
 	#the api should return an array of some sort
 	#the profile stats (delcared above) get set to array values
-	pass
+	profile_coins = int(user.get("profile_coins", 0))
+	profile_max_health = int(user.get("profile_max_health", PLAYER_HEALTH))
+	profile_speed = int(user.get("profile_speed", PLAYER_SPEED))
+	profile_attack_damage = int(user.get("profile_attack_damage", PLAYER_ATTACK_DAMAGE))
+	profile_attack_speed = int(user.get("profile_attack_speed", PLAYER_ATTACK_SPEED))
+
 
 func load_scene(scene_path: String):
 	if not root_node:
@@ -97,6 +102,14 @@ func load_ui(scene_path: String):
 	var new_ui_layer = load(scene_path).instantiate()
 	new_ui_layer.size = get_viewport().size
 	ui_layer.add_child(new_ui_layer)
+	
+	#if this ui emits stats_to_manager (Upgrades screen), hook it
+	if new_ui_layer.has_signal("stats_to_manager"):
+		new_ui_layer.stats_to_manager.connect(_on_stats_from_upgrades)
+		
+func _on_stats_from_upgrades():
+	pass
+	
 
 func load_overlay(scene_path: String):
 	var new_overlay_layer = load(scene_path).instantiate()
@@ -119,7 +132,7 @@ func hide_all_overlays():
 	overlay_scene = null
 	print("All overlays cleared")
 
-signal reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE)
+signal reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE) #unused signal
 
 func game_start():
 	player = get_tree().get_first_node_in_group("Player")
@@ -136,8 +149,10 @@ func game_start():
 	player.exp_changed.connect(huzz.update_exp)
 	enemy_manager.boss_timer_tick.connect(huzz.update_timer)
 
-	#TODO replace signal variable with varibles after updated by profile stats
-	emit_signal("reset_stats",PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE)
+	#TODO replace signal variable with varibles after updated by profile stats <<loser
+	emit_signal("reset_stats", profile_max_health, profile_speed, profile_attack_speed, profile_attack_damage)
+	#emit_signal("reset_stats",PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE)
+	
 	#needs to reset player stats at the start of the game
 	#needs to also be added/multiplied by profile stats
 

@@ -104,6 +104,7 @@ func _on_request_completed(_result:int, response_code:int, _headers:PackedString
 		var user = response.get("user", {})
 		var username = user.get("username", username_field.text)
 		SceneManager.username = username
+		SceneManager.apply_profile_stats(user) #any successful register or login sets both scenemanager.username/.profile from the db row
 		
 		if last_action == "register":
 			status.text = "Account created. Please sign in."
