@@ -237,6 +237,7 @@ func send_exp(exp):
 
 signal get_enemy_data()
 
+#FOR PAOLA RIGHTG HERE HEKLO DO THIS
 func get_game_data():
 	game_coins_collected
 	game_exp_earned
