@@ -53,13 +53,22 @@ func _on_health_pressed() -> void:
 		pass #this is where we left off eheheheheh <<<3333  FIX FUNC BELOW <<<3333
 
 func _on_damage_pressed() -> void:
-	price_check(attack_damage_price,attack_damage_level,max_level,damage)
+	if(price_check(attack_damage_price,attack_damage_level,max_level,damage)):
+		attack_damage_level += 1
+	else:
+		pass
 
 func _on_attack_speed_pressed() -> void:
-	price_check(attack_speed_price,attack_speed_level,max_level,attack_speed)
+	if(price_check(attack_speed_price,attack_speed_level,max_level,attack_speed)):
+		attack_speed_level += 1
+	else:
+		pass
 
 func _on_move_speed_pressed() -> void:
-	price_check(speed_price,speed_level,max_level,move_speed)
+	if(price_check(speed_price,speed_level,max_level,move_speed)):
+		speed_level += 1
+	else:
+		pass
 
 func apply_level(label,current:int,max:int):
 	var price = (base_price*current)+2
@@ -75,6 +84,7 @@ func price_check(stat_price:int,current:int,max:int,label):
 		return false
 	else:
 		coins = coins - stat_price
+		current += 1
 		stat_price = apply_level(label,current,max)
 		coins_label.text = "Coins: " + str(coins)
 		return true
