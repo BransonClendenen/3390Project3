@@ -10,6 +10,8 @@ var enemy_health := 0
 var enemy_damage := 0
 var enemy_speed := 0
 
+var enemies_killed = 0
+
 var active_enemies: Array = []
 
 func _ready():
@@ -52,6 +54,7 @@ func _on_enemy_died(enemy):
 	#chosen = item_types[randi() % item_types.size()]
 	item_manager.spawn_random_item(enemy.position)
 	active_enemies.erase(enemy)
+	enemies_killed += 1
 
 func spawn_big_boss():
 	var boss = big_boss_scene.instantiate()

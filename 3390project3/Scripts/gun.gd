@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 	if is_ready == true:
 		#create bullet
 		var bullet_instance = BULLET.instantiate()
+		var current_duration = 1.75
 		#set damage
 		bullet_instance.attack_damage = attack_damage
 		get_tree().root.add_child(bullet_instance)
@@ -42,4 +43,5 @@ func _process(delta: float) -> void:
 		bullet_instance.rotation = rotation
 		#reset timer
 		is_ready = false
+		cooldown.wait_time = (current_duration/attack_speed)
 		cooldown.start()

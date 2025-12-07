@@ -37,8 +37,11 @@ var ui
 var huzz
 var enemy_manager
 
-#settings var
-#var master_volume: float = 20.0
+#previous game data
+var game_exp_earned = 0
+var game_coins_collected = 0
+var game_enemies_killed = 0
+var game_time_survived = 0
 
 
 func _ready() -> void:
@@ -176,6 +179,7 @@ func game_start():
 	player = get_tree().get_first_node_in_group("Player")
 	player.show_level_up_overlay.connect(show_level_up)
 	player.display_coins.connect(send_coins)
+	player.display_exp.connect(send_exp)
 	player.apply_cloak.connect(apply_cloak)
 	
 	#if ANYTHING is moved in tree you have to change number in get_child()
@@ -223,7 +227,22 @@ signal sending_coins(current_coins)
 
 func send_coins(current_coins):
 	profile_coins += current_coins
+	game_coins_collected = current_coins
+	get_game_data()
 	emit_signal("sending_coins",current_coins)
+
+func send_exp(exp):
+	game_exp_earned = exp
+
+signal get_enemy_data()
+
+func get_game_data():
+	game_coins_collected
+	game_exp_earned
+	emit_signal("get_enemy_data")
+	game_enemies_killed
+	game_time_survived
+	print("coins",game_coins_collected,"exp:",game_exp_earned,"enemies:",game_enemies_killed,"time",floor(game_time_survived))
 
 #func display_username(name):
 #	username = name #no longer using
