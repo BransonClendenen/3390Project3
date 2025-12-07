@@ -1,4 +1,7 @@
 extends Control
+#do we need to adjust price_check so it updates the correct *_level and *_price variables?
+#what behavior do we want for applylevel and pricecheck
+#make sure values sent via stats_to_manager match what players actually see?
 
 @onready var username: Label = $Profile/Username
 @onready var coins_label: Label = $Profile/Coins
@@ -34,11 +37,20 @@ signal stats_to_manager(coins,speed_level,health_level,attack_damage_level,attac
 
 func _on_back_pressed() -> void:
 	#should send information to api about any stat changes
+	SceneManager.profile_max_health = health_level
+	SceneManager.profile_speed = speed_level
+	SceneManager.profile_attack_damage = attack_damage_level
+	SceneManager.profile_attack_speed = attack_speed_level
+	print("settings:",speed_level,health_level,attack_damage_level,attack_speed_level)
+	print("manager:",SceneManager.profile_speed,SceneManager.profile_max_health,SceneManager.profile_attack_damage,SceneManager.profile_attack_speed)
 	emit_signal("stats_to_manager",coins,speed_level,health_level,attack_damage_level,attack_speed_level)
 	SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn")
 
 func _on_health_pressed() -> void:
-	price_check(health_price,health_level,max_level,health)
+	if(price_check(health_price,health_level,max_level,health)):
+		health_level += 1
+	else:
+		pass #this is where we left off eheheheheh <<<3333  FIX FUNC BELOW <<<3333
 
 func _on_damage_pressed() -> void:
 	price_check(attack_damage_price,attack_damage_level,max_level,damage)
@@ -57,12 +69,12 @@ func apply_level(label,current:int,max:int):
 func price_check(stat_price:int,current:int,max:int,label):
 	if(current == max):
 		print("max level")
-		pass
+		return false
 	if(stat_price > coins):
 		print("haha poor")
-		pass
+		return false
 	else:
 		coins = coins - stat_price
-		current += 1
 		stat_price = apply_level(label,current,max)
 		coins_label.text = "Coins: " + str(coins)
+		return true
