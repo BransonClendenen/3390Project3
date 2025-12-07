@@ -45,6 +45,11 @@ func increase_difficulty(multiplier):
 	enemy_manager.enemy_health += increase_health * multiplier
 	enemy_manager.enemy_damage += increase_damage * multiplier
 	enemy_manager.enemy_speed += increase_speed * multiplier
+	for enemy in enemy_manager.active_enemies:
+		enemy.health = enemy_manager.enemy_health
+		enemy.damage = enemy_manager.enemy_damage
+		enemy.speed = enemy_manager.enemy_speed
+	enemy_manager.choose_scene()
 
 func _process(delta):
 	tick_accumulator += delta

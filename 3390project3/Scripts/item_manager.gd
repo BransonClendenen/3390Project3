@@ -9,10 +9,10 @@ var item_scenes := {
 	"Cloak": preload("res://Scenes/Objects/Cloak.tscn")
 }
 var item_weight := {
-	"EXP": 90,
-	"Coin": 5,
-	"Medkit": 4,
-	"Cloak": 1
+	"EXP": 80,
+	"Coin": 10,
+	"Medkit": 8,
+	"Cloak": 2
 }
 
 func get_weighted_item() -> String:

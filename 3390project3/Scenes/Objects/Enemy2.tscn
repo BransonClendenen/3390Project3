@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv2cvjfvs70ie"]
+
+[ext_resource type="Script" uid="uid://l3u8qj7ntqs8" path="res://Scripts/enemy_1.gd" id="1_5qf64"]
+[ext_resource type="Texture2D" uid="uid://bsrhbq80m6w78" path="res://Sprites/paul.webp" id="2_68yww"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2ge6"]
+radius = 19.5
+height = 73.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hrnfo"]
+radius = 27.0
+height = 84.0
+
+[node name="Enemy2" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_5qf64")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -0.5)
+shape = SubResource("CapsuleShape2D_x2ge6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.3841858e-07, -1.0000005)
+scale = Vector2(0.26999998, 0.4)
+texture = ExtResource("2_68yww")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CapsuleShape2D_hrnfo")
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

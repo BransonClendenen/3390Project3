@@ -1,7 +1,15 @@
 extends Node2D
 
-var enemy_scene = preload("res://Scenes/Objects/Enemy1.tscn")
+var enemy_scene_1 = preload("res://Scenes/Objects/Enemy1.tscn")
+var enemy_scene_2 = preload("res://Scenes/Objects/Enemy2.tscn")
 var big_boss_scene = preload("res://Scenes/Objects/BigBoss.tscn")
+
+var pauls = [
+	preload("res://Scenes/Objects/Enemy1.tscn"),
+	preload("res://Scenes/Objects/Enemy2.tscn")
+]
+
+var current_enemy_scene
 
 @onready var item_manager: Node2D = $"../../ItemManager"
 
@@ -16,6 +24,7 @@ var active_enemies: Array = []
 
 func _ready():
 	SceneManager.cloak_to_enemy.connect(apply_cloak)
+	choose_scene()
 
 #functions for the invince cloak(by god it is awful)
 func apply_cloak():
@@ -28,8 +37,11 @@ func unapply_cloak():
 	for enemy in active_enemies:
 		enemy.damage = enemy_damage
 
+func choose_scene():
+	current_enemy_scene = pauls.pick_random()
+
 func spawn_enemy():
-	var enemy = enemy_scene.instantiate()
+	var enemy = current_enemy_scene.instantiate()
 	
 	#stats
 	enemy.health = enemy_health
