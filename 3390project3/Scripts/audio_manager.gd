@@ -4,23 +4,24 @@ extends Node
 @onready var music_player = SceneManager.music_player
 
 var current_music_path: String = ""
-var master_volume = 20.0
+var master_volume = 10.0
+var sfx_volume = 20.0
 
 signal music_finished
 signal sfx_played(name : String)
 
 func _ready():
 	print(master_volume)
-	set_master_volume(master_volume)
+	#set_master_volume(master_volume)
 	play_music("res://Sounds/menu_music.mp3")
-	play_sfx("res://Sounds/mi-bombo.mp3")
+	play_sfx("res://Sounds/game_open.mp3")
 
-func set_master_volume(value: float):
-	music_player.volume_db = value
-	
-	for child in sfx_container.get_children():
-		if child is AudioStreamPlayer:
-			child.volume_db = value
+#func set_master_volume(value: float):
+	#music_player.volume_db = value
+	#
+	#for child in sfx_container.get_children():
+		#if child is AudioStreamPlayer:
+			#child.volume_db = value
 
 func play_music(path: String):
 	if current_music_path == path:
@@ -40,7 +41,7 @@ func play_sfx(path: String):
 	var stream = load(path)
 	var player = AudioStreamPlayer.new()
 	player.stream = stream
-	player.volume_db = master_volume
+	player.volume_db = sfx_volume
 	sfx_container.add_child(player)
 	player.play()
 	

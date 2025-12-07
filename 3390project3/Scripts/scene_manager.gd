@@ -97,6 +97,7 @@ func load_scene(scene_path: String):
 	game_layer.add_child(new_game_layer)
 	#comments are so cool i know im doing now!!!!
 	game_scene = new_game_layer
+	AudioManager.play_music("res://Sounds/game_music.mp3")
 
 func load_ui(scene_path: String):
 	game_layer.get_children().map(func(child): child.queue_free())
@@ -109,7 +110,7 @@ func load_ui(scene_path: String):
 	#if this ui emits stats_to_manager (Upgrades screen), hook it
 	if new_ui_layer.has_signal("stats_to_manager"):
 		new_ui_layer.stats_to_manager.connect(_on_stats_from_upgrades)
-		
+
 func _on_stats_from_upgrades(coins: int, speed_level: int, health_level: int, attack_damage_level: int, attack_speed_level: int) -> void:
 	
 	#this update profile stats from  upgrades scene
@@ -243,9 +244,6 @@ func get_game_data():
 	game_enemies_killed
 	game_time_survived
 	print("coins",game_coins_collected,"exp:",game_exp_earned,"enemies:",game_enemies_killed,"time",floor(game_time_survived))
-
-#func display_username(name):
-#	username = name #no longer using
 
 signal cloak_to_enemy()
 
