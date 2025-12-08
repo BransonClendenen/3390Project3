@@ -50,6 +50,7 @@ func increase_difficulty(multiplier):
 		enemy.damage = enemy_manager.enemy_damage
 		enemy.speed = enemy_manager.enemy_speed
 	enemy_manager.choose_scene()
+	AudioManager.play_sfx("res://Sounds/drugs.mp3",25)
 
 func _process(delta):
 	tick_accumulator += delta

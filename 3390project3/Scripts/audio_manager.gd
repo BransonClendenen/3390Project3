@@ -14,7 +14,7 @@ func _ready():
 	print(master_volume)
 	#set_master_volume(master_volume)
 	play_music("res://Sounds/menu_music.mp3")
-	play_sfx("res://Sounds/game_open.mp3")
+	play_sfx("res://Sounds/game_open.mp3",20)
 
 #func set_master_volume(value: float):
 	#music_player.volume_db = value
@@ -37,11 +37,11 @@ func stop_music():
 	music_player.stop()
 	current_music_path = ""
 
-func play_sfx(path: String):
+func play_sfx(path: String, volume: float):
 	var stream = load(path)
 	var player = AudioStreamPlayer.new()
 	player.stream = stream
-	player.volume_db = sfx_volume
+	player.volume_db = volume
 	sfx_container.add_child(player)
 	player.play()
 	

@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c8oruik0up2an" path="res://Scripts/root.gd" id="1_b57eb"]
 [ext_resource type="Texture2D" uid="uid://bq8h6gqssvg8i" path="res://Sprites/Dungeon-Floor.png" id="2_achix"]
 [ext_resource type="PackedScene" uid="uid://dcxf07elqvg8e" path="res://Scenes/Game/AudioManager.tscn" id="3_3glv5"]
-[ext_resource type="Texture2D" uid="uid://dmj77ovnp5mre" path="res://Sprites/TopBottomWallNew - Copy.png" id="3_ht0re"]
-[ext_resource type="Texture2D" uid="uid://3t6o8hysgqb2" path="res://Sprites/RightLeftWallNew.png" id="4_q6u4o"]
+[ext_resource type="Texture2D" uid="uid://ewcliay1rm8g" path="res://Sprites/TopBottomWallNew - Copy.png" id="3_ht0re"]
+[ext_resource type="Texture2D" uid="uid://dpwryopt31whw" path="res://Sprites/RightLeftWallNew.png" id="4_q6u4o"]
 
 [node name="Root" type="Control"]
 layout_mode = 3
@@ -66,6 +66,8 @@ offset_bottom = 40.0
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="SFXContainer" parent="." instance=ExtResource("3_3glv5")]
+process_mode = 3
 script = null
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3

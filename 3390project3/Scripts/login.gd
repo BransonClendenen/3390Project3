@@ -31,7 +31,7 @@ func _validate_fields() -> bool:
 		status.text = "please enter username and password!"
 		username_field.text = ""
 		password_field.text = ""
-		AudioManager.play_sfx("res://Sounds/alarm.mp3")
+		AudioManager.play_sfx("res://Sounds/alarm.mp3",10)
 		return false
 	return true
 
@@ -41,7 +41,7 @@ func _on_LoginButton_pressed() -> void:
 	
 	if(username_field.text == "Ineedin"):
 		SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn")
-		AudioManager.play_sfx("res://Sounds/mi-bombo.mp3")
+		AudioManager.play_sfx("res://Sounds/mi-bombo.mp3",10)
 		pass
 	
 	last_action = "login"
@@ -61,7 +61,7 @@ func _on_LoginButton_pressed() -> void:
 	var err := http_request.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(payload))
 	if err != OK:
 		status.text = "Request error: %d" % err
-		AudioManager.play_sfx("res://Sounds/alarm.mp3")
+		AudioManager.play_sfx("res://Sounds/alarm.mp3",10)
 
 func _on_create_account_pressed() -> void:
 	if not _validate_fields():
@@ -86,7 +86,7 @@ func _on_create_account_pressed() -> void:
 	var err := http_request.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(payload))
 	if err != OK:
 		status.text = "Request error: %d" % err
-		AudioManager.play_sfx("res://Sounds/alarm.mp3")
+		AudioManager.play_sfx("res://Sounds/alarm.mp3",10)
 
 func _on_request_completed(_result:int, response_code:int, _headers:PackedStringArray, body:PackedByteArray) -> void:
 	var raw := body.get_string_from_utf8()
@@ -111,13 +111,13 @@ func _on_request_completed(_result:int, response_code:int, _headers:PackedString
 		
 		if last_action == "register":
 			status.text = "Account created. Please sign in."
-			AudioManager.play_sfx("res://Sounds/create_acc.mp3")
+			AudioManager.play_sfx("res://Sounds/create_acc.mp3",15)
 			# keep username, clear password? this is optionql idk
 			password_field.text = ""
 		elif last_action == "login":
 			status.text = "Logged in as %s" % username
 			SceneManager.load_ui("res://Scenes/UI/MainMenu.tscn")
-			AudioManager.play_sfx("res://Sounds/correct.mp3")
+			AudioManager.play_sfx("res://Sounds/correct.mp3",20)
 		else:
 			status.text = "Success."
 	else:
@@ -126,7 +126,7 @@ func _on_request_completed(_result:int, response_code:int, _headers:PackedString
 		if response.has("error"):
 			err_msg = str(response["error"])
 		status.text = "Request error: %s" % err_msg
-		AudioManager.play_sfx("res://Sounds/alarm.mp3")
+		AudioManager.play_sfx("res://Sounds/alarm.mp3",10)
 
 func _on_sign_in_pressed() -> void:
 	# signin button uses the same login logic

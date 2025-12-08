@@ -78,13 +78,16 @@ func apply_level(label,current:int,max:int):
 func price_check(stat_price:int,current:int,max:int,label):
 	if(current == max):
 		print("max level")
+		AudioManager.play_sfx("res://Sounds/reject.mp3",20)
 		return false
 	if(stat_price > coins):
 		print("haha poor")
+		AudioManager.play_sfx("res://Sounds/any_error2.mp3",20)
 		return false
 	else:
 		coins = coins - stat_price
 		current += 1
 		stat_price = apply_level(label,current,max)
 		coins_label.text = "Coins: " + str(coins)
+		AudioManager.play_sfx("res://Sounds/buy_upgrade.mp3",30)
 		return true
