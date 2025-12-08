@@ -1,7 +1,7 @@
 extends Control
 
-@onready var username_field: TextEdit = $MainMenuView/VBoxContainer/usernameField
-@onready var password_field: TextEdit = $MainMenuView/VBoxContainer/passwordField
+@onready var username_field: LineEdit = $MainMenuView/VBoxContainer/usernameField
+@onready var password_field: LineEdit = $MainMenuView/VBoxContainer/passwordField
 @onready var status: Label = $MainMenuView/VBoxContainer/Status
 
 var http_request: HTTPRequest

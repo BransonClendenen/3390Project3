@@ -97,7 +97,6 @@ func load_scene(scene_path: String):
 	game_layer.add_child(new_game_layer)
 	#comments are so cool i know im doing now!!!!
 	game_scene = new_game_layer
-	AudioManager.play_music("res://Sounds/game_music.mp3")
 
 func load_ui(scene_path: String):
 	game_layer.get_children().map(func(child): child.queue_free())

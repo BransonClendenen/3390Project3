@@ -59,7 +59,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 text = "Username:"
 
-[node name="usernameField" type="TextEdit" parent="MainMenuView/VBoxContainer"]
+[node name="usernameField" type="LineEdit" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -67,9 +67,10 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Password:"
 
-[node name="passwordField" type="TextEdit" parent="MainMenuView/VBoxContainer"]
+[node name="passwordField" type="LineEdit" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+secret = true
 
 [node name="Status" type="Label" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
