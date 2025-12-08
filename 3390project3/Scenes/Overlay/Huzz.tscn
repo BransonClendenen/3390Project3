@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5m5vwt8kjnbe"]
+[gd_scene load_steps=9 format=3 uid="uid://c5m5vwt8kjnbe"]
 
 [ext_resource type="Script" uid="uid://bht44jau77gmu" path="res://Scripts/huzz.gd" id="1_4n48u"]
+[ext_resource type="FontFile" uid="uid://c0435xnojuboj" path="res://Sprites/Buttons/aseprite.otf" id="2_kjmfv"]
+[ext_resource type="Texture2D" uid="uid://pb1orao3puuu" path="res://Sprites/Buttons/EZButton.png" id="2_ycc7w"]
+[ext_resource type="Texture2D" uid="uid://g6uorylhodg8" path="res://Sprites/Buttons/Flashbang1.png" id="3_kjmfv"]
+[ext_resource type="Texture2D" uid="uid://cofevbnhv3xf8" path="res://Sprites/Buttons/EZButtonzoom.png" id="4_kjmfv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ehebq"]
+texture = ExtResource("2_ycc7w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cqm28"]
+texture = ExtResource("3_kjmfv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2enbv"]
+texture = ExtResource("4_kjmfv")
 
 [node name="HUZZ" type="Control"]
 process_mode = 3
@@ -19,9 +32,13 @@ offset_bottom = 102.0
 
 [node name="HealthLabel" type="Label" parent="ExpAndHealth"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kjmfv")
+theme_override_font_sizes/font_size = 26
 
 [node name="ExpLabel" type="Label" parent="ExpAndHealth"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kjmfv")
+theme_override_font_sizes/font_size = 26
 
 [node name="ButtonManager" type="Control" parent="."]
 anchors_preset = 0
@@ -29,10 +46,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Pause" type="Button" parent="ButtonManager"]
+custom_minimum_size = Vector2(112, 48)
 layout_mode = 0
-offset_left = 1053.0
+offset_left = 1040.0
 offset_right = 1152.0
-offset_bottom = 89.0
+offset_bottom = 58.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_ehebq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cqm28")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2enbv")
 text = "Pause"
 
 [node name="Timer" type="VBoxContainer" parent="."]
@@ -43,8 +64,12 @@ offset_bottom = 74.0
 
 [node name="TimeLabel" type="Label" parent="Timer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kjmfv")
+theme_override_font_sizes/font_size = 26
 
 [node name="BossLabel" type="Label" parent="Timer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kjmfv")
+theme_override_font_sizes/font_size = 26
 
 [connection signal="pressed" from="ButtonManager/Pause" to="." method="_on_pause_pressed"]

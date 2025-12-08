@@ -64,8 +64,13 @@ func spawn_enemy():
 	
 	return enemy
 
+signal game_won()
+
 func _on_enemy_died(enemy):
 	#chosen = item_types[randi() % item_types.size()]
+	if enemy == big_boss_scene:
+		emit_signal("game_won")
+	
 	item_manager.spawn_random_item(enemy.position)
 	active_enemies.erase(enemy)
 	enemies_killed += 1

@@ -38,6 +38,7 @@ func _on_option_1_pressed() -> void:
 	
 	SceneManager.hide_top_overlay()
 	get_tree().paused = false
+	AudioManager.play_sfx("res://Sounds/taco_bell.mp3",20)
 
 func _on_option_2_pressed() -> void:
 	
@@ -46,6 +47,7 @@ func _on_option_2_pressed() -> void:
 	
 	SceneManager.hide_top_overlay()
 	get_tree().paused = false
+	AudioManager.play_sfx("res://Sounds/taco_bell.mp3",20)
 
 func _on_option_3_pressed() -> void:
 	
@@ -54,6 +56,7 @@ func _on_option_3_pressed() -> void:
 	
 	SceneManager.hide_top_overlay()
 	get_tree().paused = false
+	AudioManager.play_sfx("res://Sounds/taco_bell.mp3",20)
 
 func show_overlay():
 	var shuffled = all_stats.duplicate()

@@ -41,6 +41,7 @@ func _process(delta: float) -> void:
 		get_tree().root.add_child(bullet_instance)
 		bullet_instance.global_position = muzzle.global_position
 		bullet_instance.rotation = rotation
+		AudioManager.play_sfx("res://Sounds/gun_shot.mp3",1)
 		#reset timer
 		is_ready = false
 		cooldown.wait_time = (current_duration/attack_speed)
