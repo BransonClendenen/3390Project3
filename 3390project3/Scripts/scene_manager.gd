@@ -37,8 +37,11 @@ var ui
 var huzz
 var enemy_manager
 
-#settings var
-var master_volume: float = 20.0
+#previous game data
+var game_exp_earned = 0
+var game_coins_collected = 0
+var game_enemies_killed = 0
+var game_time_survived = 0
 
 
 func _ready() -> void:
@@ -73,10 +76,10 @@ func apply_profile_stats(user: Dictionary) -> void: #consume prof stats
 	#the api should return an array of some sort
 	#the profile stats (delcared above) get set to array values
 	profile_coins = int(user.get("profile_coins", 0))
-	profile_max_health = int(user.get("profile_max_health", PLAYER_HEALTH))
-	profile_speed = int(user.get("profile_speed", PLAYER_SPEED))
-	profile_attack_damage = int(user.get("profile_attack_damage", PLAYER_ATTACK_DAMAGE))
-	profile_attack_speed = int(user.get("profile_attack_speed", PLAYER_ATTACK_SPEED))
+	profile_max_health = int(user.get("profile_max_health", profile_max_health))
+	profile_speed = int(user.get("profile_speed", profile_speed))
+	profile_attack_damage = int(user.get("profile_attack_damage", profile_attack_damage))
+	profile_attack_speed = int(user.get("profile_attack_speed", profile_attack_speed))
 
 
 func load_scene(scene_path: String):
@@ -94,6 +97,7 @@ func load_scene(scene_path: String):
 	game_layer.add_child(new_game_layer)
 	#comments are so cool i know im doing now!!!!
 	game_scene = new_game_layer
+	AudioManager.play_music("res://Sounds/game_music.mp3")
 
 func load_ui(scene_path: String):
 	game_layer.get_children().map(func(child): child.queue_free())
@@ -106,10 +110,48 @@ func load_ui(scene_path: String):
 	#if this ui emits stats_to_manager (Upgrades screen), hook it
 	if new_ui_layer.has_signal("stats_to_manager"):
 		new_ui_layer.stats_to_manager.connect(_on_stats_from_upgrades)
-		
-func _on_stats_from_upgrades():
-	pass
+
+func _on_stats_from_upgrades(coins: int, speed_level: int, health_level: int, attack_damage_level: int, attack_speed_level: int) -> void:
 	
+	#this update profile stats from  upgrades scene
+	profile_coins = coins
+	profile_speed = speed_level
+	profile_max_health = health_level
+	profile_attack_damage = attack_damage_level
+	profile_attack_speed = attack_speed_level
+
+	#printin
+	print("here are da updated profile stats from Upgrades:",
+		"coins=", profile_coins,
+		" health=", profile_max_health,
+		" speed=", profile_speed,
+		" dmg=", profile_attack_damage,
+		" atk_spd=", profile_attack_speed
+	)
+	save_profile_stats_to_server()
+	
+func save_profile_stats_to_server() -> void:
+	if auth_token == "" or http_request == null:
+		print("No auth token or httprequest; cannot save ur stats.")
+		return
+
+	var payload :={
+		"profile_coins": profile_coins,
+		"profile_max_health": profile_max_health,
+		"profile_speed": profile_speed,
+		"profile_attack_damage": profile_attack_damage,
+		"profile_attack_speed": profile_attack_speed,
+	}
+		
+	var headers :=[
+		"Content-Type: application/json",
+		"Authorization: " + "Bearer " + auth_token
+	]
+
+	var url = API_BASE + "/stats"
+	var err := http_request.request(url, headers, HTTPClient.METHOD_PUT, JSON.stringify(payload))
+	if err != OK:
+		print("there was an error sending stats update:", err)
 
 func load_overlay(scene_path: String):
 	var new_overlay_layer = load(scene_path).instantiate()
@@ -132,25 +174,32 @@ func hide_all_overlays():
 	overlay_scene = null
 	print("All overlays cleared")
 
-signal reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE) #unused signal
+signal reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE)
 
 func game_start():
 	player = get_tree().get_first_node_in_group("Player")
 	player.show_level_up_overlay.connect(show_level_up)
 	player.display_coins.connect(send_coins)
+	player.display_exp.connect(send_exp)
 	player.apply_cloak.connect(apply_cloak)
 	
 	#if ANYTHING is moved in tree you have to change number in get_child()
 	#spahgetti code to rule all spahgetti code
 	#anyways this defines variables and makes connections for the huzz
+	#in 2002 i hit a guy on a bike under the influence and was never caught or arrested for it
 	enemy_manager = game_scene.get_child(1)
 	huzz = overlay_scene
 	player.health_changed.connect(huzz.update_health)
 	player.exp_changed.connect(huzz.update_exp)
 	enemy_manager.boss_timer_tick.connect(huzz.update_timer)
-
+	
+	var max_health = PLAYER_HEALTH + profile_max_health
+	var speed = PLAYER_SPEED + (profile_speed*30)
+	var attack_damage = PLAYER_ATTACK_DAMAGE + profile_attack_damage
+	var attack_speed = PLAYER_ATTACK_SPEED + profile_attack_speed
+	
 	#TODO replace signal variable with varibles after updated by profile stats <<loser
-	emit_signal("reset_stats", profile_max_health, profile_speed, profile_attack_speed, profile_attack_damage)
+	emit_signal("reset_stats", max_health, speed, attack_speed, attack_damage)
 	#emit_signal("reset_stats",PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_ATTACK_DAMAGE)
 	
 	#needs to reset player stats at the start of the game
@@ -178,10 +227,24 @@ func ui_to_player_stat(upgrade_name,upgrade_amount):
 signal sending_coins(current_coins)
 
 func send_coins(current_coins):
+	profile_coins += current_coins
+	game_coins_collected = current_coins
+	get_game_data()
 	emit_signal("sending_coins",current_coins)
 
-#func display_username(name):
-#	username = name #no longer using
+func send_exp(exp):
+	game_exp_earned = exp
+
+signal get_enemy_data()
+
+#FOR PAOLA RIGHTG HERE HEKLO DO THIS
+func get_game_data():
+	game_coins_collected
+	game_exp_earned
+	emit_signal("get_enemy_data")
+	game_enemies_killed
+	game_time_survived
+	print("coins",game_coins_collected,"exp:",game_exp_earned,"enemies:",game_enemies_killed,"time",floor(game_time_survived))
 
 signal cloak_to_enemy()
 

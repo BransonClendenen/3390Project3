@@ -24,6 +24,7 @@ func apply_damage(amount):
 func die():
 	emit_signal("enemy_died", self)
 	queue_free()
+	AudioManager.play_sfx("res://Sounds/enemy_death.mp3")
 
 func _on_attack_area_body_entered(body):
 	if body.is_in_group("Player"):

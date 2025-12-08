@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chv7ja8bsscny"
+path="res://.godot/imported/boss_spawn - Copy.mp3-b530c8f97bf527ddfd9c2e3ce34ba7c8.mp3str"
+
+[deps]
+
+source_file="res://Sounds/boss_spawn - Copy.mp3"
+dest_files=["res://.godot/imported/boss_spawn - Copy.mp3-b530c8f97bf527ddfd9c2e3ce34ba7c8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -25,6 +25,11 @@ func _ready() -> void:
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	spawn_timer.start()
 	boss_timer.start()
+	SceneManager.get_enemy_data.connect(send_data)
+
+func send_data():
+	SceneManager.game_enemies_killed = enemy_manager.enemies_killed
+	SceneManager.game_time_survived = total_time - boss_timer.time_left
 
 func _on_spawn_timer_timeout():
 	enemy_manager.spawn_enemy()
@@ -34,11 +39,17 @@ func reset_difficulty():
 	enemy_manager.enemy_health = STANDARD_HEALTH 
 	enemy_manager.enemy_damage = STANDARD_DAMAGE
 	enemy_manager.enemy_speed = STANDARD_SPEED
+	enemy_manager.enemies_killed = 0
 
 func increase_difficulty(multiplier):
 	enemy_manager.enemy_health += increase_health * multiplier
 	enemy_manager.enemy_damage += increase_damage * multiplier
 	enemy_manager.enemy_speed += increase_speed * multiplier
+	for enemy in enemy_manager.active_enemies:
+		enemy.health = enemy_manager.enemy_health
+		enemy.damage = enemy_manager.enemy_damage
+		enemy.speed = enemy_manager.enemy_speed
+	enemy_manager.choose_scene()
 
 func _process(delta):
 	tick_accumulator += delta

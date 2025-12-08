@@ -13,6 +13,7 @@ var level = 0
 var next_level = 0
 var current_exp = 0
 
+var total_exp = 0
 var current_coins = 0
 
 #these connect to the ui for real time stat updates
@@ -25,6 +26,7 @@ signal gun_attack_speed_changed(attack_speed)
 signal show_level_up_overlay()
 #called to display coins on end game screen
 signal display_coins(current_coins)
+signal display_exp(total_exp)
 
 func _ready():
 	SceneManager.reset_stats.connect(_on_reset_stats)
@@ -37,6 +39,7 @@ func _on_reset_stats(PLAYER_HEALTH, PLAYER_SPEED, PLAYER_ATTACK_SPEED, PLAYER_AT
 	level = 0
 	next_level = 3
 	current_exp = 0
+	total_exp = 0 
 	
 	#coin stat
 	current_coins = 0
@@ -117,6 +120,7 @@ func _on_apply_item(item_type: String, value: int):
 	match item_type:
 		"EXP":
 			current_exp += value
+			total_exp += 1
 			#print(current_exp)
 			emit_signal("exp_changed", current_exp, next_level)
 			if current_exp >= next_level:
@@ -145,6 +149,7 @@ func apply_damage(amount):
 
 func die():
 	SceneManager.load_overlay("res://Scenes/Overlay/GameOver.tscn")
+	emit_signal("display_exp",total_exp)
 	emit_signal("display_coins",current_coins)
 	get_tree().paused = true
 	#stop game and end player to game over screen, then to start screen
