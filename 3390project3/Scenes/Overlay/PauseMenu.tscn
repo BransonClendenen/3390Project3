@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://b0goyq1yr07mb"]
 
 [ext_resource type="Script" uid="uid://bwoqrbmj6dxok" path="res://Scripts/pause_menu.gd" id="1_q1jam"]
-[ext_resource type="FontFile" uid="uid://bbo7f0ws4rvv5" path="res://Sprites/Buttons/aseprite.otf" id="2_64mv7"]
-[ext_resource type="Texture2D" uid="uid://de3whpqjympku" path="res://Sprites/Buttons/StartButton.png" id="3_7wchu"]
-[ext_resource type="Texture2D" uid="uid://nhottj3v35ct" path="res://Sprites/Buttons/Flashbang5.jpg" id="4_wu4vj"]
-[ext_resource type="Texture2D" uid="uid://d58emljy6dgt" path="res://Sprites/Buttons/StartButtonzoom.png" id="5_4c5d7"]
-[ext_resource type="Texture2D" uid="uid://cl3xnj4g0knd3" path="res://Sprites/Buttons/Flashbang4.png" id="6_3dem3"]
+[ext_resource type="FontFile" uid="uid://c0435xnojuboj" path="res://Sprites/Buttons/aseprite.otf" id="2_64mv7"]
+[ext_resource type="Texture2D" uid="uid://b2tc35wb13a35" path="res://Sprites/Buttons/StartButton.png" id="3_7wchu"]
+[ext_resource type="Texture2D" uid="uid://3h42rqnhdyuh" path="res://Sprites/Buttons/Flashbang5.jpg" id="4_wu4vj"]
+[ext_resource type="Texture2D" uid="uid://bhvdbskcx61qo" path="res://Sprites/Buttons/StartButtonzoom.png" id="5_4c5d7"]
+[ext_resource type="Texture2D" uid="uid://ylv01ur7d77y" path="res://Sprites/Buttons/Flashbang4.png" id="6_3dem3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6hvh3"]
 texture = ExtResource("3_7wchu")

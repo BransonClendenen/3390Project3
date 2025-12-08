@@ -203,6 +203,7 @@ func game_start():
 	player.display_coins.connect(send_coins)
 	player.display_exp.connect(send_exp)
 	player.apply_cloak.connect(apply_cloak)
+	player.lose_game.connect(game_lost)
 	
 	#if ANYTHING is moved in tree you have to change number in get_child()
 	#spahgetti code to rule all spahgetti code
@@ -213,6 +214,7 @@ func game_start():
 	player.health_changed.connect(huzz.update_health)
 	player.exp_changed.connect(huzz.update_exp)
 	enemy_manager.boss_timer_tick.connect(huzz.update_timer)
+	enemy_manager.show_game_won.connect(game_won)
 	
 	var max_health = PLAYER_HEALTH + profile_max_health
 	var speed = PLAYER_SPEED + (profile_speed*30)
@@ -271,3 +273,10 @@ signal cloak_to_enemy()
 
 func apply_cloak():
 	emit_signal("cloak_to_enemy")
+
+signal play_agartha(win:bool)
+
+func game_won():
+	emit_signal("play_agartha",1)
+func game_lost():
+	emit_signal("play_agartha",0)

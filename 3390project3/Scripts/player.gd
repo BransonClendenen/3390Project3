@@ -65,7 +65,7 @@ func level_up():
 	SceneManager.load_overlay("res://Scenes/Overlay/LevelUp.tscn")
 	emit_signal("show_level_up_overlay")
 	emit_signal("exp_changed", current_exp, next_level)
-	AudioManager.play_sfx("res://Sounds/on_level_up.mp3",20)
+	AudioManager.play_sfx("res://Sounds/on_level_up.mp3",30)
 	#print("level up!", level, "current:",current_exp,"next_lvl",next_level)
 
 func _increase_player_stat(stat_name: String, amount: int):
@@ -122,14 +122,14 @@ func _on_apply_item(item_type: String, value: int):
 		"EXP":
 			current_exp += value
 			total_exp += 1
-			AudioManager.play_sfx("res://Sounds/exp.mp3",20)
+			AudioManager.play_sfx("res://Sounds/exp.mp3",30)
 			emit_signal("exp_changed", current_exp, next_level)
 			if current_exp >= next_level:
 				get_tree().paused = true
 				level_up()
 		"Coin":
 			current_coins += value
-			AudioManager.play_sfx("res://Sounds/coin.mp3",20)
+			AudioManager.play_sfx("res://Sounds/coin.mp3",30)
 			#print(current_coins)
 		"Medkit":
 			if((current_health + value) > max_health):
@@ -137,10 +137,10 @@ func _on_apply_item(item_type: String, value: int):
 			else:
 				current_health += value
 			emit_signal("health_changed", current_health, max_health)
-			AudioManager.play_sfx("res://Sounds/heal.mp3",20)
+			AudioManager.play_sfx("res://Sounds/heal.mp3",30)
 		"Cloak":
 			emit_signal("apply_cloak")
-			AudioManager.play_sfx("res://Sounds/cloak.mp3",20)
+			AudioManager.play_sfx("res://Sounds/cloak.mp3",30)
 
 func apply_damage(amount):
 	current_health -= amount
@@ -149,10 +149,12 @@ func apply_damage(amount):
 	if current_health <= 0:
 		die()
 
+signal lose_game()
+
 func die():
 	SceneManager.load_overlay("res://Scenes/Overlay/GameOver.tscn")
 	emit_signal("display_exp",total_exp)
 	emit_signal("display_coins",current_coins)
-	AudioManager.play_sfx("res://Sounds/game_over.mp3",30)
+	emit_signal("lose_game")
 	get_tree().paused = true
 	#stop game and end player to game over screen, then to start screen

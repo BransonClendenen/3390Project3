@@ -4,7 +4,7 @@ extends Node
 @onready var music_player = SceneManager.music_player
 
 var current_music_path: String = ""
-var master_volume = 10.0
+var master_volume = 20.0
 var sfx_volume = 20.0
 
 signal music_finished
@@ -52,4 +52,5 @@ func play_sfx(path: String, volume: float):
 	emit_signal("sfx_played", path)
 
 func _on_music_player_finished() -> void:
+	play_music(current_music_path)
 	emit_signal("music_finished")

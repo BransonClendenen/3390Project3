@@ -26,6 +26,7 @@ func _ready() -> void:
 	spawn_timer.start()
 	boss_timer.start()
 	SceneManager.get_enemy_data.connect(send_data)
+	enemy_manager.game_won.connect(game_won)
 
 func send_data():
 	SceneManager.game_enemies_killed = enemy_manager.enemies_killed
@@ -50,7 +51,7 @@ func increase_difficulty(multiplier):
 		enemy.damage = enemy_manager.enemy_damage
 		enemy.speed = enemy_manager.enemy_speed
 	enemy_manager.choose_scene()
-	AudioManager.play_sfx("res://Sounds/drugs.mp3",25)
+	AudioManager.play_sfx("res://Sounds/drugs.mp3",40)
 
 func _process(delta):
 	tick_accumulator += delta
@@ -73,3 +74,9 @@ func _process(delta):
 		enemy_manager.spawn_big_boss()
 		boss_timer.stop()
 		spawn_timer.stop()
+
+signal show_game_won()
+
+func game_won():
+	emit_signal("show_game_won")
+	

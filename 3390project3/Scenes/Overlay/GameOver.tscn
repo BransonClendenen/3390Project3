@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://no471bq0oynn"]
 
 [ext_resource type="Script" uid="uid://d2ebgrikks6v0" path="res://Scripts/game_over.gd" id="1_dxd7h"]
-[ext_resource type="FontFile" uid="uid://bbo7f0ws4rvv5" path="res://Sprites/Buttons/aseprite.otf" id="2_7cy5g"]
-[ext_resource type="Texture2D" uid="uid://bhd5lje8kwott" path="res://Sprites/Buttons/UpgradeButton.png" id="3_nniwx"]
-[ext_resource type="Texture2D" uid="uid://cprdljt1xp22x" path="res://Sprites/Buttons/Flashbang6.png" id="4_x0vxx"]
-[ext_resource type="Texture2D" uid="uid://d58emljy6dgt" path="res://Sprites/Buttons/StartButtonzoom.png" id="5_l2s58"]
+[ext_resource type="FontFile" uid="uid://c0435xnojuboj" path="res://Sprites/Buttons/aseprite.otf" id="2_7cy5g"]
+[ext_resource type="Texture2D" uid="uid://cikd1ifax3jn0" path="res://Sprites/Buttons/UpgradeButton.png" id="3_nniwx"]
+[ext_resource type="Texture2D" uid="uid://o8nemd04gshm" path="res://Sprites/Buttons/Flashbang6.png" id="4_x0vxx"]
+[ext_resource type="Texture2D" uid="uid://bhvdbskcx61qo" path="res://Sprites/Buttons/StartButtonzoom.png" id="5_l2s58"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_26ows"]
 texture = ExtResource("3_nniwx")
