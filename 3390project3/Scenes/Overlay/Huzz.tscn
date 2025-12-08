@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5m5vwt8kjnbe"]
+[gd_scene load_steps=9 format=3 uid="uid://c5m5vwt8kjnbe"]
 
 [ext_resource type="Script" uid="uid://bht44jau77gmu" path="res://Scripts/huzz.gd" id="1_4n48u"]
-[ext_resource type="Texture2D" uid="uid://1f7oa5kvfrrt" path="res://Sprites/Buttons/EZButton.png" id="2_ycc7w"]
-[ext_resource type="Texture2D" uid="uid://da4wgo7pxd323" path="res://Sprites/Buttons/Flashbang1.png" id="3_kjmfv"]
-[ext_resource type="Texture2D" uid="uid://qegsvbh0tbls" path="res://Sprites/Buttons/EZButtonzoom.png" id="4_kjmfv"]
+[ext_resource type="FontFile" uid="uid://c0435xnojuboj" path="res://Sprites/Buttons/aseprite.otf" id="2_kjmfv"]
+[ext_resource type="Texture2D" uid="uid://pb1orao3puuu" path="res://Sprites/Buttons/EZButton.png" id="2_ycc7w"]
+[ext_resource type="Texture2D" uid="uid://g6uorylhodg8" path="res://Sprites/Buttons/Flashbang1.png" id="3_kjmfv"]
+[ext_resource type="Texture2D" uid="uid://cofevbnhv3xf8" path="res://Sprites/Buttons/EZButtonzoom.png" id="4_kjmfv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ehebq"]
 texture = ExtResource("2_ycc7w")
@@ -31,9 +32,13 @@ offset_bottom = 102.0
 
 [node name="HealthLabel" type="Label" parent="ExpAndHealth"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kjmfv")
+theme_override_font_sizes/font_size = 26
 
 [node name="ExpLabel" type="Label" parent="ExpAndHealth"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kjmfv")
+theme_override_font_sizes/font_size = 26
 
 [node name="ButtonManager" type="Control" parent="."]
 anchors_preset = 0
@@ -59,8 +64,12 @@ offset_bottom = 74.0
 
 [node name="TimeLabel" type="Label" parent="Timer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kjmfv")
+theme_override_font_sizes/font_size = 26
 
 [node name="BossLabel" type="Label" parent="Timer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kjmfv")
+theme_override_font_sizes/font_size = 26
 
 [connection signal="pressed" from="ButtonManager/Pause" to="." method="_on_pause_pressed"]
