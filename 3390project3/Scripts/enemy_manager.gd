@@ -6,7 +6,9 @@ var big_boss_scene = preload("res://Scenes/Objects/BigBoss.tscn")
 
 var pauls = [
 	preload("res://Scenes/Objects/Enemy1.tscn"),
-	preload("res://Scenes/Objects/Enemy2.tscn")
+	preload("res://Scenes/Objects/Enemy2.tscn"),
+	preload("res://Scenes/Objects/Enemy3.tscn"),
+	preload("res://Scenes/Objects/Enemy4.tscn")
 ]
 
 var current_enemy_scene

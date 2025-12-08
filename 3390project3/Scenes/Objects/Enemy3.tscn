@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv2cvjfvs70ie"]
+[gd_scene load_steps=5 format=3 uid="uid://cuptn7w8scwc7"]
 
-[ext_resource type="Script" uid="uid://l3u8qj7ntqs8" path="res://Scripts/enemy_1.gd" id="1_5qf64"]
-[ext_resource type="Texture2D" uid="uid://du014pscx1xwm" path="res://Sprites/FloatingPaul4.png" id="2_5qf64"]
+[ext_resource type="Script" uid="uid://l3u8qj7ntqs8" path="res://Scripts/enemy_1.gd" id="1_mj612"]
+[ext_resource type="Texture2D" uid="uid://bu4iaj28dh0wt" path="res://Sprites/FloatingPaul2.png" id="2_irygr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2ge6"]
 radius = 19.5
@@ -11,17 +11,17 @@ height = 73.0
 radius = 27.0
 height = 84.0
 
-[node name="Enemy4" type="CharacterBody2D" groups=["Enemies"]]
-script = ExtResource("1_5qf64")
+[node name="Enemy2" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_mj612")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, -0.5)
 shape = SubResource("CapsuleShape2D_x2ge6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.499999, 0.5000029)
-scale = Vector2(1.22, 1.7799999)
-texture = ExtResource("2_5qf64")
+position = Vector2(-0.99999964, 1.000001)
+scale = Vector2(1.3199999, 1.7999998)
+texture = ExtResource("2_irygr")
 
 [node name="AttackArea" type="Area2D" parent="."]
 
