@@ -1,11 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxinvlkwer7sr"]
+[gd_scene load_steps=21 format=3 uid="uid://bxinvlkwer7sr"]
 
 [ext_resource type="Script" uid="uid://cpt1fvolq58yt" path="res://Scripts/main_menu.gd" id="1_tt5f1"]
-[ext_resource type="Texture2D" uid="uid://c83bbnxcf4rpw" path="res://Sprites/PaulBONK.png" id="2_mjmdf"]
+[ext_resource type="Texture2D" uid="uid://c6sl6t0nnowbp" path="res://Sprites/PaulBONK.png" id="2_mjmdf"]
+[ext_resource type="FontFile" uid="uid://bbo7f0ws4rvv5" path="res://Sprites/Buttons/aseprite.otf" id="3_kl3t2"]
 [ext_resource type="Texture2D" uid="uid://de3whpqjympku" path="res://Sprites/Buttons/StartButton.png" id="3_t6w0q"]
 [ext_resource type="Texture2D" uid="uid://1f7oa5kvfrrt" path="res://Sprites/Buttons/EZButton.png" id="4_k8um8"]
 [ext_resource type="Texture2D" uid="uid://da4wgo7pxd323" path="res://Sprites/Buttons/Flashbang1.png" id="5_jex3y"]
 [ext_resource type="Texture2D" uid="uid://qegsvbh0tbls" path="res://Sprites/Buttons/EZButtonzoom.png" id="5_k8um8"]
+[ext_resource type="Texture2D" uid="uid://niwbsvd0t6e3" path="res://Sprites/Buttons/Flashbang3.png" id="5_ynupv"]
+[ext_resource type="Texture2D" uid="uid://d58emljy6dgt" path="res://Sprites/Buttons/StartButtonzoom.png" id="6_ynupv"]
+[ext_resource type="Texture2D" uid="uid://bfsg5vuhiarn0" path="res://Sprites/Buttons/Flashbang8.jpg" id="8_m48tj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jex3y"]
 
@@ -13,12 +17,16 @@
 texture = ExtResource("3_t6w0q")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dvisc"]
+texture = ExtResource("5_ynupv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hys1s"]
+texture = ExtResource("6_ynupv")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kl3t2"]
 texture = ExtResource("4_k8um8")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m48tj"]
-texture = ExtResource("5_jex3y")
+texture = ExtResource("8_m48tj")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jex3y"]
 texture = ExtResource("5_k8um8")
@@ -28,6 +36,9 @@ texture = ExtResource("4_k8um8")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ab04i"]
 texture = ExtResource("5_jex3y")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fgqbg"]
+texture = ExtResource("5_k8um8")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -50,17 +61,20 @@ offset_left = 407.0
 offset_top = 537.0
 offset_right = 750.0
 offset_bottom = 623.0
+theme_override_fonts/font = ExtResource("3_kl3t2")
 theme_override_styles/normal = SubResource("StyleBoxTexture_744d7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_dvisc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hys1s")
 text = "Enter the Dungeon"
 
 [node name="Upgrades" type="Button" parent="ButtonManager"]
 custom_minimum_size = Vector2(200, 86)
 layout_mode = 0
-offset_left = 854.0
+offset_left = 859.0
 offset_top = 467.0
-offset_right = 1054.0
+offset_right = 1059.0
 offset_bottom = 554.0
+theme_override_fonts/font = ExtResource("3_kl3t2")
 theme_override_styles/normal = SubResource("StyleBoxTexture_kl3t2")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_m48tj")
 theme_override_styles/hover = SubResource("StyleBoxTexture_jex3y")
@@ -69,12 +83,14 @@ text = "Upgrades"
 [node name="SignOut" type="Button" parent="ButtonManager"]
 custom_minimum_size = Vector2(200, 86)
 layout_mode = 0
-offset_left = 97.0
+offset_left = 95.0
 offset_top = 467.0
-offset_right = 297.0
+offset_right = 295.0
 offset_bottom = 554.0
+theme_override_fonts/font = ExtResource("3_kl3t2")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ynupv")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ab04i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fgqbg")
 text = "Sign Out"
 
 [connection signal="pressed" from="ButtonManager/StartGame" to="." method="_on_start_game_pressed"]

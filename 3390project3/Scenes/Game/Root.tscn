@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c8oruik0up2an" path="res://Scripts/root.gd" id="1_b57eb"]
 [ext_resource type="Texture2D" uid="uid://bq8h6gqssvg8i" path="res://Sprites/Dungeon-Floor.png" id="2_achix"]
 [ext_resource type="PackedScene" uid="uid://dcxf07elqvg8e" path="res://Scenes/Game/AudioManager.tscn" id="3_3glv5"]
-[ext_resource type="Texture2D" uid="uid://b1c04jrnih4pw" path="res://Sprites/TopBottomWall.png" id="3_4c88h"]
-[ext_resource type="Texture2D" uid="uid://p67tijtbbcbw" path="res://Sprites/RightLeftWall.png" id="4_ht0re"]
+[ext_resource type="Texture2D" uid="uid://dmj77ovnp5mre" path="res://Sprites/TopBottomWallNew - Copy.png" id="3_ht0re"]
+[ext_resource type="Texture2D" uid="uid://3t6o8hysgqb2" path="res://Sprites/RightLeftWallNew.png" id="4_q6u4o"]
 
 [node name="Root" type="Control"]
 layout_mode = 3
@@ -26,21 +26,21 @@ texture = ExtResource("2_achix")
 
 [node name="Wall" type="Sprite2D" parent="MapSprites/Parallax2D"]
 position = Vector2(0, -1920)
-texture = ExtResource("3_4c88h")
+texture = ExtResource("3_ht0re")
 
 [node name="Wall2" type="Sprite2D" parent="MapSprites/Parallax2D"]
 position = Vector2(0, 1920)
 rotation = -3.1415925
-texture = ExtResource("3_4c88h")
+texture = ExtResource("3_ht0re")
 
 [node name="Wall3" type="Sprite2D" parent="MapSprites/Parallax2D"]
 position = Vector2(-1970, 0)
-texture = ExtResource("4_ht0re")
+texture = ExtResource("4_q6u4o")
 
 [node name="Wall4" type="Sprite2D" parent="MapSprites/Parallax2D"]
 position = Vector2(1970, 0)
 rotation = -3.1415925
-texture = ExtResource("4_ht0re")
+texture = ExtResource("4_q6u4o")
 
 [node name="GameLayer" type="Node2D" parent="."]
 

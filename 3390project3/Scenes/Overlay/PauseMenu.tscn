@@ -1,6 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0goyq1yr07mb"]
+[gd_scene load_steps=11 format=3 uid="uid://b0goyq1yr07mb"]
 
 [ext_resource type="Script" uid="uid://bwoqrbmj6dxok" path="res://Scripts/pause_menu.gd" id="1_q1jam"]
+[ext_resource type="FontFile" uid="uid://bbo7f0ws4rvv5" path="res://Sprites/Buttons/aseprite.otf" id="2_64mv7"]
+[ext_resource type="Texture2D" uid="uid://de3whpqjympku" path="res://Sprites/Buttons/StartButton.png" id="3_7wchu"]
+[ext_resource type="Texture2D" uid="uid://nhottj3v35ct" path="res://Sprites/Buttons/Flashbang5.jpg" id="4_wu4vj"]
+[ext_resource type="Texture2D" uid="uid://d58emljy6dgt" path="res://Sprites/Buttons/StartButtonzoom.png" id="5_4c5d7"]
+[ext_resource type="Texture2D" uid="uid://cl3xnj4g0knd3" path="res://Sprites/Buttons/Flashbang4.png" id="6_3dem3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6hvh3"]
+texture = ExtResource("3_7wchu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_orpi7"]
+texture = ExtResource("4_wu4vj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3y4bd"]
+texture = ExtResource("5_4c5d7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_64mv7"]
+texture = ExtResource("6_3dem3")
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -13,10 +30,12 @@ script = ExtResource("1_q1jam")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 364.0
-offset_top = 64.0
-offset_right = 504.0
+offset_left = 391.0
+offset_top = 51.0
+offset_right = 752.0
 offset_bottom = 87.0
+theme_override_fonts/font = ExtResource("2_64mv7")
+theme_override_font_sizes/font_size = 36
 text = "THIS SHIT PAUSED"
 
 [node name="Buttons" type="Control" parent="."]
@@ -26,21 +45,31 @@ offset_bottom = 40.0
 
 [node name="Resume" type="Button" parent="Buttons"]
 process_mode = 3
+custom_minimum_size = Vector2(350, 86)
 layout_mode = 0
 offset_left = 396.0
 offset_top = 102.0
 offset_right = 488.0
 offset_bottom = 167.0
-text = "Reumse"
+theme_override_fonts/font = ExtResource("2_64mv7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_6hvh3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_orpi7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3y4bd")
+text = "Resume"
 
 [node name="Quit" type="Button" parent="Buttons"]
 process_mode = 3
+custom_minimum_size = Vector2(350, 86)
 layout_mode = 0
-offset_left = 403.0
-offset_top = 264.0
-offset_right = 477.0
-offset_bottom = 338.0
-text = "Qib"
+offset_left = 397.0
+offset_top = 208.0
+offset_right = 747.0
+offset_bottom = 294.0
+theme_override_fonts/font = ExtResource("2_64mv7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_6hvh3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_64mv7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3y4bd")
+text = "Quit"
 
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]

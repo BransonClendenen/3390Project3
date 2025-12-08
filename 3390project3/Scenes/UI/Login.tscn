@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://crjbas1hi6vi4"]
+[gd_scene load_steps=10 format=3 uid="uid://crjbas1hi6vi4"]
 
 [ext_resource type="Script" uid="uid://qqc8fa1q8txk" path="res://Scripts/login.gd" id="1_leum0"]
 [ext_resource type="Texture2D" uid="uid://66fad0cy8mev" path="res://Sprites/MainMenuView.png" id="2_06ade"]
+[ext_resource type="FontFile" uid="uid://bbo7f0ws4rvv5" path="res://Sprites/Buttons/aseprite.otf" id="3_cx46i"]
+[ext_resource type="Texture2D" uid="uid://1f7oa5kvfrrt" path="res://Sprites/Buttons/EZButton.png" id="4_q7p0k"]
+[ext_resource type="Texture2D" uid="uid://niwbsvd0t6e3" path="res://Sprites/Buttons/Flashbang3.png" id="5_cx46i"]
+[ext_resource type="Texture2D" uid="uid://qegsvbh0tbls" path="res://Sprites/Buttons/EZButtonzoom.png" id="6_grg4y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cx46i"]
+texture = ExtResource("4_q7p0k")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q7p0k"]
+texture = ExtResource("5_cx46i")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lth64"]
+texture = ExtResource("6_grg4y")
 
 [node name="Login" type="Control"]
 layout_mode = 3
@@ -29,20 +42,30 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CreateAccount" type="Button" parent="MainMenuView/Buttons"]
+custom_minimum_size = Vector2(200, 86)
 layout_mode = 0
-offset_left = 751.0
-offset_top = 119.0
-offset_right = 922.0
-offset_bottom = 223.0
+offset_left = 758.0
+offset_top = 92.0
+offset_right = 958.0
+offset_bottom = 196.0
+theme_override_fonts/font = ExtResource("3_cx46i")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cx46i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_q7p0k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lth64")
 text = "Create Account
 "
 
 [node name="SignIn" type="Button" parent="MainMenuView/Buttons"]
+custom_minimum_size = Vector2(200, 86)
 layout_mode = 0
-offset_left = 237.0
-offset_top = 118.0
-offset_right = 408.69012
-offset_bottom = 224.0
+offset_left = 188.0
+offset_top = 87.0
+offset_right = 388.0
+offset_bottom = 193.0
+theme_override_fonts/font = ExtResource("3_cx46i")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cx46i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_q7p0k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lth64")
 text = "Sign In"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuView"]
@@ -57,23 +80,28 @@ theme_override_constants/separation = 10
 
 [node name="Username" type="Label" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cx46i")
 text = "Username:"
 
 [node name="usernameField" type="LineEdit" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_cx46i")
 
 [node name="Password" type="Label" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cx46i")
 text = "Password:"
 
 [node name="passwordField" type="LineEdit" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_cx46i")
 secret = true
 
 [node name="Status" type="Label" parent="MainMenuView/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cx46i")
 text = "Status:"
 
 [connection signal="pressed" from="MainMenuView/Buttons/CreateAccount" to="." method="_on_create_account_pressed"]
