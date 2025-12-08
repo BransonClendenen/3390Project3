@@ -153,6 +153,28 @@ func save_profile_stats_to_server() -> void:
 	if err != OK:
 		print("there was an error sending stats update:", err)
 
+func save_game_result_to_server() -> void:
+	if auth_token == "" or http_request == null:
+		print("No auth token or httprequest; cannot save ur game history.")
+		return
+	
+	var payload := {
+		"enemies_killed": game_enemies_killed,
+		"time_survived": int(floor(game_time_survived)),
+		"exp_earned": game_exp_earned,
+		"coins_collected": game_coins_collected,
+	}
+	
+	var headers := [
+	"Content-Type: application/json",
+	"Authorization: " + "Bearer " + auth_token
+	]
+	
+	var url = "http://localhost:3000/api/game/run"
+	var err := http_request.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(payload))
+	if err != OK:
+		print("there was an error sending game result:", err)
+
 func load_overlay(scene_path: String):
 	var new_overlay_layer = load(scene_path).instantiate()
 	overlay_layer.add_child(new_overlay_layer)
@@ -239,12 +261,12 @@ signal get_enemy_data()
 
 #FOR PAOLA RIGHTG HERE HEKLO DO THIS
 func get_game_data():
-	game_coins_collected
-	game_exp_earned
 	emit_signal("get_enemy_data")
-	game_enemies_killed
-	game_time_survived
-	print("coins",game_coins_collected,"exp:",game_exp_earned,"enemies:",game_enemies_killed,"time",floor(game_time_survived))
+	#print("coins",game_coins_collected,
+	#"exp",game_exp_collected,
+	#"enemies:",game_enemies_killed,
+	#"time",floor(game_time_survived))
+	save_game_result_to_server()
 
 signal cloak_to_enemy()
 
