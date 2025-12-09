@@ -44,8 +44,8 @@ func reset_difficulty():
 
 func increase_difficulty(multiplier):
 	enemy_manager.enemy_health += increase_health * multiplier
-	enemy_manager.enemy_damage += increase_damage * multiplier
-	enemy_manager.enemy_speed += increase_speed * multiplier
+	enemy_manager.enemy_damage += (increase_damage * multiplier)/2
+	enemy_manager.enemy_speed += (increase_speed * multiplier)/2
 	for enemy in enemy_manager.active_enemies:
 		enemy.health = enemy_manager.enemy_health
 		enemy.damage = enemy_manager.enemy_damage

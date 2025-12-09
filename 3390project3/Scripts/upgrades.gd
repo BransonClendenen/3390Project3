@@ -23,7 +23,7 @@ var attack_damage_price
 var attack_speed_price
 
 var base_price = 2
-var max_level = 10
+var max_level = 20
 
 func _ready() -> void:
 	username.text = "Good Evening " + SceneManager.username

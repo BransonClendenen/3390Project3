@@ -11,6 +11,16 @@ var pauls = [
 	preload("res://Scenes/Objects/Enemy4.tscn")
 ]
 
+var paulNoises = [
+	"res://Sounds/BuffaloSauce.mp3",
+	"res://Sounds/NotTooSpicy.mp3",
+	"res://Sounds/PaulLaugh.mp3",
+	"res://Sounds/Pistachio.mp3",
+	"res://Sounds/SixSeven.mp3",
+	"res://Sounds/SixtySeven.mp3",
+	"res://Sounds/TwentyOne.mp3",
+]
+
 var current_enemy_scene
 
 @onready var item_manager: Node2D = $"../../ItemManager"
@@ -44,7 +54,7 @@ func choose_scene():
 
 func spawn_enemy():
 	var enemy = current_enemy_scene.instantiate()
-	
+	var sound = paulNoises.pick_random()
 	#stats
 	enemy.health = enemy_health
 	enemy.damage = enemy_damage
@@ -62,6 +72,7 @@ func spawn_enemy():
 	if enemy.has_signal("enemy_died"):
 		enemy.enemy_died.connect(_on_enemy_died)
 	
+	AudioManager.play_sfx(str(sound),40)
 	return enemy
 
 signal game_won()
