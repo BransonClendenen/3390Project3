@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce62okt0xmav"]
+[gd_scene load_steps=10 format=3 uid="uid://ce62okt0xmav"]
 
 [ext_resource type="Script" uid="uid://c8oruik0up2an" path="res://Scripts/root.gd" id="1_b57eb"]
 [ext_resource type="Texture2D" uid="uid://bq8h6gqssvg8i" path="res://Sprites/Dungeon-Floor.png" id="2_achix"]
 [ext_resource type="PackedScene" uid="uid://dcxf07elqvg8e" path="res://Scenes/Game/AudioManager.tscn" id="3_3glv5"]
 [ext_resource type="Texture2D" uid="uid://ewcliay1rm8g" path="res://Sprites/TopBottomWallNew - Copy.png" id="3_ht0re"]
 [ext_resource type="Texture2D" uid="uid://dpwryopt31whw" path="res://Sprites/RightLeftWallNew.png" id="4_q6u4o"]
+[ext_resource type="Texture2D" uid="uid://dgic6d54udwh7" path="res://Sprites/Placeholders/Crowbar.jpeg.jpeg" id="5_q6u4o"]
+[ext_resource type="Texture2D" uid="uid://dnt38fdn7anq" path="res://Sprites/Placeholders/lick.jpeg.jpeg" id="6_4vajf"]
+[ext_resource type="Texture2D" uid="uid://n1xcgw3w1dxk" path="res://Sprites/Placeholders/patrick.jpeg.jpeg" id="7_4idsn"]
+[ext_resource type="Texture2D" uid="uid://bsrhbq80m6w78" path="res://Sprites/paul.webp" id="8_4idsn"]
 
 [node name="Root" type="Control"]
 layout_mode = 3
@@ -41,6 +45,25 @@ texture = ExtResource("4_q6u4o")
 position = Vector2(1970, 0)
 rotation = -3.1415925
 texture = ExtResource("4_q6u4o")
+
+[node name="CrowbarCorner" type="Sprite2D" parent="MapSprites/Parallax2D"]
+position = Vector2(1224, -1191)
+texture = ExtResource("5_q6u4o")
+
+[node name="Lick" type="Sprite2D" parent="MapSprites/Parallax2D"]
+position = Vector2(-1282.0001, 1332)
+scale = Vector2(0.28565893, 0.19778655)
+texture = ExtResource("6_4vajf")
+
+[node name="RickPat" type="Sprite2D" parent="MapSprites/Parallax2D"]
+position = Vector2(1244, 1364.4999)
+scale = Vector2(2.2574255, 0.4439996)
+texture = ExtResource("7_4idsn")
+
+[node name="PaulMan" type="Sprite2D" parent="MapSprites/Parallax2D"]
+position = Vector2(-1249.0001, -1335)
+scale = Vector2(2.1749997, 0.855)
+texture = ExtResource("8_4idsn")
 
 [node name="GameLayer" type="Node2D" parent="."]
 
