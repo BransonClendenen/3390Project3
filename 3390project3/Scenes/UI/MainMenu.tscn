@@ -1,15 +1,15 @@
 [gd_scene load_steps=21 format=3 uid="uid://bxinvlkwer7sr"]
 
 [ext_resource type="Script" uid="uid://cpt1fvolq58yt" path="res://Scripts/main_menu.gd" id="1_tt5f1"]
-[ext_resource type="Texture2D" uid="uid://c6sl6t0nnowbp" path="res://Sprites/PaulBONK.png" id="2_mjmdf"]
-[ext_resource type="FontFile" uid="uid://bbo7f0ws4rvv5" path="res://Sprites/Buttons/aseprite.otf" id="3_kl3t2"]
-[ext_resource type="Texture2D" uid="uid://de3whpqjympku" path="res://Sprites/Buttons/StartButton.png" id="3_t6w0q"]
-[ext_resource type="Texture2D" uid="uid://1f7oa5kvfrrt" path="res://Sprites/Buttons/EZButton.png" id="4_k8um8"]
-[ext_resource type="Texture2D" uid="uid://da4wgo7pxd323" path="res://Sprites/Buttons/Flashbang1.png" id="5_jex3y"]
-[ext_resource type="Texture2D" uid="uid://qegsvbh0tbls" path="res://Sprites/Buttons/EZButtonzoom.png" id="5_k8um8"]
-[ext_resource type="Texture2D" uid="uid://niwbsvd0t6e3" path="res://Sprites/Buttons/Flashbang3.png" id="5_ynupv"]
-[ext_resource type="Texture2D" uid="uid://d58emljy6dgt" path="res://Sprites/Buttons/StartButtonzoom.png" id="6_ynupv"]
-[ext_resource type="Texture2D" uid="uid://bfsg5vuhiarn0" path="res://Sprites/Buttons/Flashbang8.jpg" id="8_m48tj"]
+[ext_resource type="Texture2D" uid="uid://c83bbnxcf4rpw" path="res://Sprites/PaulBONK.png" id="2_mjmdf"]
+[ext_resource type="FontFile" uid="uid://c0435xnojuboj" path="res://Sprites/Buttons/aseprite.otf" id="3_kl3t2"]
+[ext_resource type="Texture2D" uid="uid://b2tc35wb13a35" path="res://Sprites/Buttons/StartButton.png" id="3_t6w0q"]
+[ext_resource type="Texture2D" uid="uid://pb1orao3puuu" path="res://Sprites/Buttons/EZButton.png" id="4_k8um8"]
+[ext_resource type="Texture2D" uid="uid://g6uorylhodg8" path="res://Sprites/Buttons/Flashbang1.png" id="5_jex3y"]
+[ext_resource type="Texture2D" uid="uid://cofevbnhv3xf8" path="res://Sprites/Buttons/EZButtonzoom.png" id="5_k8um8"]
+[ext_resource type="Texture2D" uid="uid://bqttiie6bpd77" path="res://Sprites/Buttons/Flashbang3.png" id="5_ynupv"]
+[ext_resource type="Texture2D" uid="uid://bhvdbskcx61qo" path="res://Sprites/Buttons/StartButtonzoom.png" id="6_ynupv"]
+[ext_resource type="Texture2D" uid="uid://dt3fg4bw5b1jy" path="res://Sprites/Buttons/Flashbang8.jpg" id="8_m48tj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jex3y"]
 
@@ -26,10 +26,10 @@ texture = ExtResource("6_ynupv")
 texture = ExtResource("4_k8um8")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m48tj"]
-texture = ExtResource("8_m48tj")
+texture = ExtResource("6_ynupv")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jex3y"]
-texture = ExtResource("5_k8um8")
+texture = ExtResource("8_m48tj")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ynupv"]
 texture = ExtResource("4_k8um8")
