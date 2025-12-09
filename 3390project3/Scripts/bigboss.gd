@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal enemy_died(enemy)
+signal boss_died(enemy)
 
 var speed = 0
 var damage = 0
@@ -23,7 +23,7 @@ func apply_damage(amount):
 		die()
 
 func die():
-	emit_signal("enemy_died", self)
+	emit_signal("boss_died", self)
 	queue_free()
 	AudioManager.play_sfx("res://Sounds/boss_dead.mp3",30)
 

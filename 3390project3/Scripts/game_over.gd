@@ -18,10 +18,13 @@ func _on_quit_pressed() -> void:
 	AudioManager.play_music("res://Sounds/menu_music.mp3")
 
 func check_win(win):
+	print("does this get reached")
+	print("win val: ",win)
 	if win == 1 :
+		print("does THIS get called")
 		AudioManager.play_sfx("res://Sounds/celebration.mp3",30)
 		AudioManager.play_sfx("res://Sounds/AGARTHA.mp3",30)
 		label.text = "You congratulations!"
-	else:
+	if win == 0 :
 		AudioManager.play_sfx("res://Sounds/game_over.mp3",30)
 		label.text = "Oh NO you dead!"

@@ -25,7 +25,6 @@ var current_enemy_scene
 
 @onready var item_manager: Node2D = $"../../ItemManager"
 
-
 var enemy_health := 0
 var enemy_damage := 0
 var enemy_speed := 0
@@ -35,6 +34,8 @@ var enemies_killed = 0
 var active_enemies: Array = []
 
 func _ready():
+	var enemy_system = get_parent()
+	enemy_system.spawn_big_paul.connect(spawn_big_boss)
 	SceneManager.cloak_to_enemy.connect(apply_cloak)
 	choose_scene()
 
@@ -79,8 +80,11 @@ signal game_won()
 
 func _on_enemy_died(enemy):
 	#chosen = item_types[randi() % item_types.size()]
-	if enemy == big_boss_scene:
-		emit_signal("game_won")
+	#if enemy.is_in_group("boss"):
+	#	print("before dead witch")
+	#	emit_signal("game_won")
+	#	print("THE WITCH IS DEAD")
+	
 	
 	item_manager.spawn_random_item(enemy.position)
 	active_enemies.erase(enemy)
@@ -88,6 +92,7 @@ func _on_enemy_died(enemy):
 
 func spawn_big_boss():
 	var boss = big_boss_scene.instantiate()
+	#add_to_group("boss")
 	
 	#stats
 	boss.health = enemy_health * 10
@@ -97,13 +102,19 @@ func spawn_big_boss():
 	#set random position on map
 	boss.global_position = Vector2(
 	randf_range(-100, 100),
-	randf_range(-400, 100))
+	randf_range(-100, 100))
 	
 	#add to enemiesFolder and the active enemies array
 	get_node("../EnemyFolder").add_child(boss)
 	active_enemies.append(boss)
 	
-	if boss.has_signal("enemy_died"):
-		boss.enemy_died.connect(_on_enemy_died)
+	if boss.has_signal("boss_died"):
+		boss.boss_died.connect(_on_boss_died)
 	
 	return boss
+
+func _on_boss_died(enemy):
+	emit_signal("game_won")
+	item_manager.spawn_random_item(enemy.position)
+	active_enemies.erase(enemy)
+	enemies_killed += 1

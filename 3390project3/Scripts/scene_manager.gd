@@ -277,6 +277,8 @@ func apply_cloak():
 signal play_agartha(win:bool)
 
 func game_won():
+	SceneManager.load_overlay("res://Scenes/Overlay/GameOver.tscn")
+	get_tree().paused = true
 	emit_signal("play_agartha",1)
 func game_lost():
 	emit_signal("play_agartha",0)

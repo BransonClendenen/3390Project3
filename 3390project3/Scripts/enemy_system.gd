@@ -19,6 +19,7 @@ var multiplier = 0
 var tick_accumulator = 0.0
 
 signal boss_timer_tick(time_left)
+signal spawn_big_paul()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,7 +45,7 @@ func reset_difficulty():
 
 func increase_difficulty(multiplier):
 	enemy_manager.enemy_health += increase_health * multiplier
-	enemy_manager.enemy_damage += (increase_damage * multiplier)/2
+	enemy_manager.enemy_damage += (increase_damage * multiplier)/4
 	enemy_manager.enemy_speed += (increase_speed * multiplier)/2
 	for enemy in enemy_manager.active_enemies:
 		enemy.health = enemy_manager.enemy_health
@@ -70,13 +71,17 @@ func _process(delta):
 		last_difficulty_step = current_step
 	elif current_step <= last_difficulty_step:
 		pass
-	if boss_timer.time_left <= 0:
-		enemy_manager.spawn_big_boss()
+	if boss_timer.time_left == 0:
+		emit_signal("spawn_big_paul")
+		#enemy_manager.spawn_big_boss()
+		#await get_tree().create_timer(1.0).timeout
 		boss_timer.stop()
 		spawn_timer.stop()
+		set_process(false)
 
 signal show_game_won()
 
 func game_won():
+	print("DO I GET CALLED AFTER")
 	emit_signal("show_game_won")
 	

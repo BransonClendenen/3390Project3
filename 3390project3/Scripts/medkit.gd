@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var item_type: String = "Medkit"
-@export var value: int = 1
+@export var value: int = 10
 
 signal picked_up
 
